@@ -19,24 +19,6 @@ const Services = ({ isDark }: ServicesProps) => {
       description: 'Beautiful and intuitive user interfaces'
     },
     {
-      icon: (
-        <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center">
-          <span className="text-white font-bold text-sm">G</span>
-        </div>
-      ),
-      title: 'Google Ads',
-      description: 'Professional Google Ads campaigns for maximum ROI and targeted reach'
-    },
-    {
-      icon: (
-        <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
-          <span className="text-white font-bold text-sm">M</span>
-        </div>
-      ),
-      title: 'Meta Ads',
-      description: 'Strategic Facebook & Instagram advertising for social media success'
-    },
-    {
       icon: <Video className="w-8 h-8" />,
       title: 'Video Editing',
       description: 'Professional video content creation'
@@ -65,7 +47,49 @@ const Services = ({ isDark }: ServicesProps) => {
           Services I Offer
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12">
+          {/* Google Ads Service */}
+          <div
+            className={`p-6 sm:p-8 rounded-lg text-center transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift ${
+              isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
+            } shadow-lg hover:shadow-2xl hover:bg-gradient-to-br hover:from-cyan-400/10 hover:to-blue-500/10 border-2 border-transparent hover:border-cyan-400/50 glow-cyan cursor-pointer pulse-glow`}
+            style={{ animationDelay: `${services.length * 200}ms` }}
+          >
+            <div className="text-cyan-400 mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 group-hover:animate-pulse">
+              <div className="w-8 h-8 mx-auto bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm">G</span>
+              </div>
+            </div>
+            <h3 className={`text-lg sm:text-xl font-bold mb-3 sm:mb-4 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              Google Ads
+            </h3>
+            <p className={`text-sm sm:text-base group-hover:text-gray-300 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+              Professional Google Ads campaigns for maximum ROI and targeted reach
+            </p>
+          </div>
+
+          {/* Meta Ads Service */}
+          <div
+            className={`p-6 sm:p-8 rounded-lg text-center transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift ${
+              isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
+            } shadow-lg hover:shadow-2xl hover:bg-gradient-to-br hover:from-cyan-400/10 hover:to-blue-500/10 border-2 border-transparent hover:border-cyan-400/50 glow-cyan cursor-pointer pulse-glow`}
+            style={{ animationDelay: `${(services.length + 1) * 200}ms` }}
+          >
+            <div className="text-cyan-400 mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 group-hover:animate-pulse">
+              <div className="w-8 h-8 mx-auto bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm">M</span>
+              </div>
+            </div>
+            <h3 className={`text-lg sm:text-xl font-bold mb-3 sm:mb-4 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              Meta Ads
+            </h3>
+            <p className={`text-sm sm:text-base group-hover:text-gray-300 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+              Strategic Facebook & Instagram advertising for social media success
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div
               key={service.title}
