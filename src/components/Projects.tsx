@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Github, ExternalLink } from 'lucide-react';
+import ecommerceProject from '@/assets/ecommerce-project.png';
 
 interface ProjectsProps {
   isDark: boolean;
@@ -11,6 +12,14 @@ interface ProjectsProps {
 
 const Projects = ({ isDark }: ProjectsProps) => {
   const projects = [
+    {
+      title: 'E-Commerce Website',
+      description: 'A modern full-stack e-commerce application with product listings, cart, and checkout features.',
+      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      image: ecommerceProject,
+      liveUrl: 'https://ecommerce-ahmad.vercel.app/',
+      codeUrl: 'https://github.com/getweblimon108/ecommerce-site.ahmad'
+    },
     {
       title: 'Portfolio',
       description: 'Professional portfolio showcase website',
