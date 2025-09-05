@@ -59,9 +59,17 @@ const Services = ({ isDark }: ServicesProps) => {
   ];
 
   return (
-    <section id="services" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 animate-fade-in ${isDark ? 'text-white' : 'text-gray-900'}`}>
+    <section id="services" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-transparent via-purple-500/5 to-cyan-500/5">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
+        <div className="absolute top-32 right-16 w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-16 w-24 h-24 bg-gradient-to-br from-green-400/20 to-teal-500/20 rounded-full blur-2xl animate-pulse delay-2000"></div>
+        <div className="absolute bottom-32 right-20 w-12 h-12 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-full blur-2xl animate-pulse delay-3000"></div>
+      </div>
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 animate-fade-in gradient-text ${isDark ? 'text-white' : 'text-gray-900'}`}>
           Services I Offer
         </h2>
 
@@ -69,20 +77,37 @@ const Services = ({ isDark }: ServicesProps) => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`p-6 sm:p-8 rounded-lg text-center transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift ${
-                isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
-              } shadow-lg hover:shadow-2xl hover:bg-gradient-to-br hover:from-cyan-400/10 hover:to-blue-500/10 border-2 border-transparent hover:border-cyan-400/50 glow-cyan cursor-pointer pulse-glow`}
+              className={`p-6 sm:p-8 rounded-xl text-center transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift cursor-pointer relative overflow-hidden
+                ${
+                  isDark 
+                    ? 'bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50' 
+                    : 'bg-white/90 backdrop-blur-sm border border-gray-200/50'
+                } 
+                shadow-lg hover:shadow-2xl glow-rainbow pulse-rainbow
+                before:absolute before:inset-0 before:bg-gradient-to-br before:from-cyan-400/10 before:via-purple-500/10 before:to-pink-500/10 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              <div className="text-cyan-400 mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 group-hover:animate-pulse">
-                {service.icon}
+              <div className="relative z-10">
+                <div className="text-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 group-hover:animate-pulse">
+                  {service.icon}
+                </div>
+                <h3 className={`text-lg sm:text-xl font-bold mb-3 sm:mb-4 transition-all duration-300 ${
+                  isDark ? 'text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-500 group-hover:bg-clip-text' 
+                    : 'text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text'
+                }`}>
+                  {service.title}
+                </h3>
+                <p className={`text-sm sm:text-base transition-colors duration-300 ${
+                  isDark ? 'text-gray-300 group-hover:text-gray-200' : 'text-gray-600 group-hover:text-gray-700'
+                }`}>
+                  {service.description}
+                </p>
               </div>
-              <h3 className={`text-lg sm:text-xl font-bold mb-3 sm:mb-4 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                {service.title}
-              </h3>
-              <p className={`text-sm sm:text-base group-hover:text-gray-300 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                {service.description}
-              </p>
+              
+              {/* Animated background particles */}
+              <div className="absolute top-4 left-4 w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-300 animate-float-particle"></div>
+              <div className="absolute top-6 right-6 w-0.5 h-0.5 bg-purple-500 rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-300 animate-float-particle" style={{animationDelay: '1s'}}></div>
+              <div className="absolute bottom-4 left-6 w-0.5 h-0.5 bg-pink-400 rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-300 animate-float-particle" style={{animationDelay: '2s'}}></div>
             </div>
           ))}
         </div>

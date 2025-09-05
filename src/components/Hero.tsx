@@ -86,14 +86,26 @@ const Hero = ({ isDark, scrollToSection }: HeroProps) => {
           <div className="flex-shrink-0 order-1 lg:order-1 lg:w-[45%]">
             <div className="relative">
               <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-md opacity-75 animate-pulse group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full blur-lg opacity-30 animate-pulse delay-1000"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-400 rounded-full blur-2xl opacity-20 animate-pulse delay-2000"></div>
+                {/* Multiple layered glowing backgrounds */}
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full blur-md opacity-75 animate-pulse group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full blur-lg opacity-40 animate-pulse delay-1000 group-hover:opacity-60"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-teal-500 to-blue-400 rounded-full blur-2xl opacity-30 animate-pulse delay-2000 group-hover:opacity-50"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-400 rounded-full blur-3xl opacity-20 animate-pulse delay-3000 group-hover:opacity-40"></div>
+                
+                {/* Rotating ring effect */}
+                <div className="absolute inset-0 rounded-full border-4 border-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-spin" style={{animationDuration: '3s'}}></div>
+                
                 <img
                   src="https://i.postimg.cc/63s7XkPy/Whats-App-Image-2025-06-28-at-2-25-43-PM.jpg"
                   alt="Hammad Ahmed - Full Stack Developer"
-                  className="relative w-full h-full rounded-full object-cover border-4 lg:border-6 border-cyan-400 shadow-2xl transform group-hover:scale-105 glow-cyan pulse-glow transition-all duration-500"
+                  className="relative w-full h-full rounded-full object-cover border-4 lg:border-6 border-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-1 shadow-2xl transform group-hover:scale-105 glow-rainbow pulse-rainbow transition-all duration-500"
                 />
+                
+                {/* Floating particles */}
+                <div className="absolute top-4 left-4 w-2 h-2 bg-cyan-400 rounded-full animate-float-particle opacity-60"></div>
+                <div className="absolute top-8 right-6 w-1 h-1 bg-purple-500 rounded-full animate-float-particle opacity-80" style={{animationDelay: '1s'}}></div>
+                <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-pink-400 rounded-full animate-float-particle opacity-70" style={{animationDelay: '2s'}}></div>
+                <div className="absolute bottom-4 right-4 w-1 h-1 bg-yellow-400 rounded-full animate-float-particle opacity-90" style={{animationDelay: '0.5s'}}></div>
               </div>
             </div>
           </div>
@@ -126,20 +138,22 @@ const Hero = ({ isDark, scrollToSection }: HeroProps) => {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8 animate-fade-in delay-500">
               <Button 
                 onClick={() => scrollToSection('projects')}
-                className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 glow-cyan hover-lift border-0"
+                className="gradient-bg text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 glow-rainbow hover-lift border-0 relative overflow-hidden group"
               >
-                View My Work
+                <span className="relative z-10">View My Work</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Button>
               <Button 
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold border-2 transition-all duration-300 hover:scale-105 hover-lift ${
+                className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold border-2 transition-all duration-300 hover:scale-105 hover-lift relative overflow-hidden group ${
                   isDark 
-                    ? 'border-cyan-400 text-cyan-400 bg-transparent hover:bg-cyan-400 hover:text-gray-900 hover:shadow-[0_0_20px_rgba(0,229,255,0.5)]' 
-                    : 'border-blue-500 text-blue-500 bg-white hover:bg-blue-500 hover:text-white hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]'
+                    ? 'border-purple-400 text-purple-400 bg-transparent hover:text-white hover:shadow-[0_0_30px_rgba(147,51,234,0.5)]' 
+                    : 'border-purple-500 text-purple-500 bg-white hover:text-white hover:shadow-[0_0_30px_rgba(147,51,234,0.5)]'
                 }`}
               >
-                Get In Touch
+                <span className="relative z-10">Get In Touch</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Button>
             </div>
 
@@ -151,14 +165,16 @@ const Hero = ({ isDark, scrollToSection }: HeroProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className={`p-2 sm:p-3 rounded-full ${isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'} 
-                    transition-all duration-300 hover:scale-125 transform hover:-translate-y-2 
-                    ${social.color} hover:shadow-lg group glow-cyan hover-lift pulse-glow`}
+                  className={`p-2 sm:p-3 rounded-full relative overflow-hidden group
+                    transition-all duration-500 hover:scale-125 transform hover:-translate-y-2 
+                    ${social.color} hover:shadow-lg glow-rainbow hover-lift pulse-rainbow
+                    ${isDark ? 'bg-gray-800/50 backdrop-blur-sm border border-gray-700' : 'bg-white/80 backdrop-blur-sm border border-gray-200 shadow-md'}`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="group-hover:animate-pulse">
+                  <div className="group-hover:animate-pulse relative z-10">
                     {social.icon}
                   </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
                 </a>
               ))}
             </div>
