@@ -47,40 +47,45 @@ const Services = ({ isDark }: ServicesProps) => {
           Services I Offer
         </h2>
 
-        {/* Advertising Section */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12 animate-fade-in">
-          <div className={`p-6 rounded-xl border-2 border-dashed transition-all duration-300 hover:scale-105 ${
-            isDark ? 'border-gray-600 bg-gray-800/30' : 'border-gray-300 bg-gray-50'
-          }`}>
-            <div className="flex items-center justify-center mb-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12">
+          {/* Google Ads Service */}
+          <div
+            className={`p-6 sm:p-8 rounded-lg text-center transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift ${
+              isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
+            } shadow-lg hover:shadow-2xl hover:bg-gradient-to-br hover:from-cyan-400/10 hover:to-blue-500/10 border-2 border-transparent hover:border-cyan-400/50 glow-cyan cursor-pointer pulse-glow`}
+            style={{ animationDelay: `${services.length * 200}ms` }}
+          >
+            <div className="text-cyan-400 mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 group-hover:animate-pulse">
+              <div className="w-8 h-8 mx-auto bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-sm">G</span>
               </div>
-              <span className={`ml-2 font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Google Ads</span>
             </div>
-            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+            <h3 className={`text-lg sm:text-xl font-bold mb-3 sm:mb-4 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              Google Ads
+            </h3>
+            <p className={`text-sm sm:text-base group-hover:text-gray-300 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
               Professional Google Ads campaigns for maximum ROI and targeted reach
             </p>
-            <div className="mt-3 text-xs text-cyan-400 font-medium">
-              ✓ Search Campaigns ✓ Display Network ✓ YouTube Ads
-            </div>
           </div>
-          
-          <div className={`p-6 rounded-xl border-2 border-dashed transition-all duration-300 hover:scale-105 ${
-            isDark ? 'border-gray-600 bg-gray-800/30' : 'border-gray-300 bg-gray-50'
-          }`}>
-            <div className="flex items-center justify-center mb-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+
+          {/* Meta Ads Service */}
+          <div
+            className={`p-6 sm:p-8 rounded-lg text-center transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift ${
+              isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
+            } shadow-lg hover:shadow-2xl hover:bg-gradient-to-br hover:from-cyan-400/10 hover:to-blue-500/10 border-2 border-transparent hover:border-cyan-400/50 glow-cyan cursor-pointer pulse-glow`}
+            style={{ animationDelay: `${(services.length + 1) * 200}ms` }}
+          >
+            <div className="text-cyan-400 mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 group-hover:animate-pulse">
+              <div className="w-8 h-8 mx-auto bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-sm">M</span>
               </div>
-              <span className={`ml-2 font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Meta Ads</span>
             </div>
-            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+            <h3 className={`text-lg sm:text-xl font-bold mb-3 sm:mb-4 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              Meta Ads
+            </h3>
+            <p className={`text-sm sm:text-base group-hover:text-gray-300 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
               Strategic Facebook & Instagram advertising for social media success
             </p>
-            <div className="mt-3 text-xs text-cyan-400 font-medium">
-              ✓ Facebook Ads ✓ Instagram Stories ✓ Messenger Ads
-            </div>
           </div>
         </div>
 

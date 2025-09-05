@@ -63,33 +63,50 @@ const Navigation = ({
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden hover:scale-110 transition-transform duration-300 w-8 h-8 sm:w-10 sm:h-10"
+              className="md:hidden hover:scale-110 hover:bg-cyan-400/20 transition-all duration-300 w-8 h-8 sm:w-10 sm:h-10 group"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
+              <div className="relative w-4 h-4 sm:w-5 sm:h-5">
+                <span className={`absolute left-0 top-0 w-full h-0.5 bg-current transform transition-all duration-300 ${
+                  isMenuOpen ? 'rotate-45 translate-y-1.5' : 'translate-y-0'
+                }`}></span>
+                <span className={`absolute left-0 top-1.5 w-full h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? 'opacity-0' : 'opacity-100'
+                }`}></span>
+                <span className={`absolute left-0 top-3 w-full h-0.5 bg-current transform transition-all duration-300 ${
+                  isMenuOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-0'
+                }`}></span>
+              </div>
             </Button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className={`md:hidden animate-fade-in ${isDark ? 'bg-gray-800' : 'bg-gray-50'} border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {['home', 'about', 'skills', 'projects', 'services', 'contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className={`block px-3 py-3 capitalize w-full text-left transition-all duration-300 hover:text-cyan-400 hover:bg-cyan-400/10 rounded-lg hover:translate-x-2 text-base ${
-                  activeSection === item ? 'text-cyan-400 bg-cyan-400/10' : isDark ? 'text-gray-300' : 'text-gray-700'
-                }`}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
+      <div className={`md:hidden overflow-hidden transition-all duration-500 ${
+        isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+      } ${isDark ? 'bg-gray-800/95' : 'bg-gray-50/95'} backdrop-blur-xl border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          {['home', 'about', 'skills', 'projects', 'services', 'contact'].map((item, index) => (
+            <button
+              key={item}
+              onClick={() => {
+                scrollToSection(item);
+                setIsMenuOpen(false);
+              }}
+              className={`block px-4 py-4 capitalize w-full text-left transition-all duration-500 hover:text-cyan-400 hover:bg-cyan-400/20 rounded-xl hover:translate-x-3 hover:scale-105 text-base font-medium transform ${
+                activeSection === item ? 'text-cyan-400 bg-cyan-400/20 translate-x-2 scale-105' : isDark ? 'text-gray-300' : 'text-gray-700'
+              } shadow-lg hover:shadow-xl border border-transparent hover:border-cyan-400/30`}
+              style={{ 
+                animationDelay: `${index * 50}ms`,
+                transform: isMenuOpen ? 'translateY(0)' : 'translateY(-20px)'
+              }}
+            >
+              {item}
+            </button>
+          ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 };

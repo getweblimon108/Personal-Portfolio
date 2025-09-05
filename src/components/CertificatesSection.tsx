@@ -83,11 +83,11 @@ const CertificatesSection = ({ isDark }: { isDark: boolean }) => {
                   }`}>
                     View collection of 5 professional certificates
                   </p>
-                  <Badge className={`animate-pulse group-hover:animate-bounce transition-all duration-300 ${
-                    isDark 
-                      ? 'bg-gradient-to-r from-cyan-500/30 to-blue-500/30 text-cyan-200 border-cyan-400/50' 
-                      : 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-700 border-blue-500/50'
-                  }`}>
+                   <Badge className={`group-hover:animate-bounce transition-all duration-300 ${
+                     isDark 
+                       ? 'bg-gradient-to-r from-cyan-500/30 to-blue-500/30 text-cyan-200 border-cyan-400/50' 
+                       : 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-700 border-blue-500/50'
+                   }`}>
                     Click to View Gallery
                   </Badge>
                 </CardContent>
@@ -192,11 +192,11 @@ const CertificatesSection = ({ isDark }: { isDark: boolean }) => {
                   }`}>
                     Professional web development certification
                   </p>
-                  <Badge className={`animate-pulse group-hover:animate-bounce transition-all duration-300 ${
-                    isDark 
-                      ? 'bg-gradient-to-r from-cyan-500/30 to-blue-500/30 text-cyan-200 border-cyan-400/50' 
-                      : 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-700 border-blue-500/50'
-                  }`}>
+                   <Badge className={`group-hover:animate-bounce transition-all duration-300 ${
+                     isDark 
+                       ? 'bg-gradient-to-r from-cyan-500/30 to-blue-500/30 text-cyan-200 border-cyan-400/50' 
+                       : 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-700 border-blue-500/50'
+                   }`}>
                     Click to View Certificate
                   </Badge>
                 </CardContent>
