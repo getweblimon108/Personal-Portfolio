@@ -9,16 +9,9 @@ interface AboutProps {
 
 const About = ({ isDark }: AboutProps) => {
   return (
-    <section id="about" className={`py-20 px-4 relative overflow-hidden ${isDark ? 'bg-gradient-to-br from-gray-900/50 via-purple-900/20 to-gray-800/50' : 'bg-gradient-to-br from-purple-50/50 via-blue-50/30 to-pink-50/50'}`}>
-      {/* Floating background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-full blur-3xl animate-float-particle"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-purple-400/10 to-pink-500/10 rounded-full blur-3xl animate-float-particle delay-2000"></div>
-        <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-gradient-to-br from-yellow-400/10 to-red-500/10 rounded-full blur-3xl animate-float-particle delay-4000"></div>
-      </div>
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in gradient-text ${isDark ? 'text-white' : 'text-gray-900'}`}>
+    <section id="about" className={`py-20 px-4 ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+      <div className="max-w-6xl mx-auto">
+        <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in ${isDark ? 'text-white' : 'text-gray-900'}`}>
           About Me
         </h2>
 
@@ -41,7 +34,7 @@ const About = ({ isDark }: AboutProps) => {
                 <Badge 
                   key={trait} 
                   variant="secondary" 
-                  className="bg-gradient-to-r from-cyan-400/20 via-purple-500/20 to-pink-500/20 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 border border-purple-400/30 hover:scale-110 transition-all duration-300 animate-fade-in hover-lift glow-rainbow pulse-rainbow backdrop-blur-sm"
+                  className="bg-gradient-to-r from-cyan-400/20 to-blue-500/20 text-cyan-400 border-cyan-400/30 hover:scale-110 transition-transform duration-300 animate-fade-in hover-lift"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {trait}

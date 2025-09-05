@@ -131,16 +131,9 @@ const Contact = ({ isDark }: ContactProps) => {
   };
 
   return (
-    <section id="contact" className={`py-20 px-4 relative overflow-hidden ${isDark ? 'bg-gradient-to-br from-gray-900/50 via-purple-900/20 to-gray-800/50' : 'bg-gradient-to-br from-purple-50/50 via-pink-50/30 to-blue-50/50'}`}>
-      {/* Floating background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-16 w-32 h-32 bg-gradient-to-br from-purple-400/10 to-pink-500/10 rounded-full blur-3xl animate-float-particle"></div>
-        <div className="absolute bottom-16 right-20 w-28 h-28 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-full blur-3xl animate-float-particle delay-2000"></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-green-400/10 to-teal-500/10 rounded-full blur-3xl animate-float-particle delay-4000"></div>
-      </div>
-      
-      <div className="max-w-4xl mx-auto relative z-10">
-        <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in gradient-text ${isDark ? 'text-white' : 'text-gray-900'}`}>
+    <section id="contact" className={`py-20 px-4 ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+      <div className="max-w-4xl mx-auto">
+        <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in ${isDark ? 'text-white' : 'text-gray-900'}`}>
           Get In Touch
         </h2>
 
@@ -198,15 +191,8 @@ const Contact = ({ isDark }: ContactProps) => {
             </div>
           </div>
 
-          <div className={`p-8 rounded-xl shadow-lg animate-fade-in delay-300 hover-lift relative overflow-hidden
-            ${
-              isDark 
-                ? 'bg-gradient-to-br from-gray-800/90 to-gray-900/80 backdrop-blur-sm border border-gray-700/50' 
-                : 'bg-white/90 backdrop-blur-sm border border-gray-200/50'
-            } 
-            hover:shadow-2xl transition-all duration-300 glow-rainbow pulse-rainbow
-            before:absolute before:inset-0 before:bg-gradient-to-br before:from-cyan-400/5 before:via-purple-500/5 before:to-pink-500/5 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100`}>
-            <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
+          <div className={`p-8 rounded-lg shadow-lg animate-fade-in delay-300 hover-lift ${isDark ? 'bg-gray-700' : 'bg-white'} hover:shadow-2xl transition-all duration-300 glow-cyan pulse-glow`}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="group">
                 <Input
                   name="name"
@@ -252,19 +238,16 @@ const Contact = ({ isDark }: ContactProps) => {
               <Button 
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full gradient-bg text-white font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 transition-all duration-300 hover:shadow-2xl glow-rainbow hover-lift relative overflow-hidden group"
+                className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 transition-all duration-300 hover:shadow-2xl glow-cyan hover-lift"
               >
-                <span className="relative z-10">
-                  {isSubmitting ? (
-                    <div className="flex items-center space-x-2">
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Sending...</span>
-                    </div>
-                  ) : (
-                    'Send Message'
-                  )}
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {isSubmitting ? (
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Sending...</span>
+                  </div>
+                ) : (
+                  'Send Message'
+                )}
               </Button>
             </form>
           </div>
