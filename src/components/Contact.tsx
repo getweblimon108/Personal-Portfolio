@@ -90,8 +90,8 @@ const Contact = ({ isDark }: ContactProps) => {
 
     try {
       await emailjs.send(
-        'service_mjhf7pm',
-        'template_zx9jn1d',
+        'service_t74f84b',
+        'template_h8rj578',
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -99,7 +99,7 @@ const Contact = ({ isDark }: ContactProps) => {
           message: formData.message,
           to_name: 'Hammad Ahmed',
         },
-        't2oikxLe40eKXPUJ6'
+        'CuS4757EZ1OwdjxeT'
       );
 
       toast({
