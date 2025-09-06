@@ -2,7 +2,7 @@
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import CertificatesSection from '@/components/CertificatesSection';
-import aboutImage from '@/assets/about-image.jpg';
+import aboutImage from '@/assets/about-ahmad.jpg';
 
 interface AboutProps {
   isDark: boolean;
@@ -10,28 +10,29 @@ interface AboutProps {
 
 const About = ({ isDark }: AboutProps) => {
   return (
-    <section id="about" className={`py-20 px-4 ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+    <section id="about" className={`py-20 px-4 ${isDark ? 'bg-gray-900/50' : 'bg-gray-50'}`}>
       <div className="max-w-6xl mx-auto">
         <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in ${isDark ? 'text-white' : 'text-gray-900'}`}>
           About Me
         </h2>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Image - appears on top on mobile, left on desktop */}
-          <div className="order-2 lg:order-1 animate-fade-in">
+          {/* Image - mobile: top, desktop: left */}
+          <div className="order-1 lg:order-1 animate-slide-in-left">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
               <img
                 src={aboutImage}
-                alt="About Ahmad Limon"
-                className="w-full h-[400px] sm:h-[500px] object-cover group-hover:scale-105 transition-transform duration-500"
+                alt="Ahmad Limon - Full Stack Developer"
+                className="w-full h-[400px] sm:h-[500px] object-cover group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-              <div className="absolute inset-0 ring-1 ring-white/10 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 ring-2 ring-primary/20 rounded-2xl group-hover:ring-primary/40 transition-all duration-500"></div>
             </div>
           </div>
 
-          {/* Content - appears on bottom on mobile, right on desktop */}
-          <div className="order-1 lg:order-2 space-y-8">
+          {/* Content - mobile: bottom, desktop: right */}
+          <div className="order-2 lg:order-2 space-y-8 animate-slide-in-right">
             <div className="animate-fade-in">
               <h3 className={`text-2xl font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 My Journey

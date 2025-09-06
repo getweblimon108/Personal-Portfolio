@@ -55,7 +55,8 @@ const Navigation = ({
               variant="ghost"
               size="icon"
               onClick={() => setIsDark(!isDark)}
-              className="hover:bg-cyan-400/20 transition-all duration-300 hover:scale-110 hover:rotate-180 w-8 h-8 sm:w-10 sm:h-10"
+              className="hover:bg-primary/20 transition-all duration-300 hover:scale-110 hover:rotate-180 w-8 h-8 sm:w-10 sm:h-10"
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
             </Button>
