@@ -55,10 +55,10 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
   ];
 
   const categories = {
-    frontend: { name: 'Frontend', color: 'from-blue-500 to-cyan-500' },
-    backend: { name: 'Backend', color: 'from-green-500 to-emerald-500' },
-    design: { name: 'Design', color: 'from-purple-500 to-pink-500' },
-    tools: { name: 'Tools & Marketing', color: 'from-orange-500 to-red-500' }
+    frontend: { name: 'Frontend', color: 'from-blue-500 to-cyan-400', progressColor: 'bg-gradient-to-r from-blue-500 to-cyan-400' },
+    backend: { name: 'Backend', color: 'from-green-500 to-emerald-400', progressColor: 'bg-gradient-to-r from-green-500 to-emerald-400' },
+    design: { name: 'Design', color: 'from-purple-500 to-pink-400', progressColor: 'bg-gradient-to-r from-purple-500 to-pink-400' },
+    tools: { name: 'Tools & Marketing', color: 'from-orange-500 to-red-400', progressColor: 'bg-gradient-to-r from-orange-500 to-red-400' }
   };
 
   useEffect(() => {
@@ -180,10 +180,15 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
                           {skill.level}%
                         </Badge>
                       </div>
-                      <Progress 
-                        value={animatedValues[skill.name] || 0} 
-                        className={`h-2 ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}
-                      />
+                      <div className={`relative h-3 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
+                        <div 
+                          className={`h-full rounded-full transition-all duration-1000 ease-out ${categories[key as keyof typeof categories].progressColor}`}
+                          style={{ 
+                            width: `${animatedValues[skill.name] || 0}%`,
+                            transition: 'width 1s ease-out'
+                          }}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
