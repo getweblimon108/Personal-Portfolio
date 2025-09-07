@@ -285,15 +285,17 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
                   {getSkillsByCategory(key as keyof typeof categories).map((skill, index) => (
                     <div key={skill.name} className="flex items-center justify-between">
                       <div className="flex items-center gap-3 flex-1">
-                        {skill.icon}
+                        <div className={`p-1.5 rounded-lg ${isDark ? 'bg-gray-800' : 'bg-gray-100'} flex items-center justify-center`}>
+                          {skill.icon}
+                        </div>
                         <span className={`text-sm font-medium ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
                           {skill.name}
                         </span>
                       </div>
                       <div className="flex items-center gap-3 flex-1">
-                        <div className={`flex-1 h-2 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
+                        <div className={`flex-1 h-3 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
                           <div 
-                            className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
+                            className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out shadow-lg`}
                             style={{ 
                               width: `${animatedValues[skill.name] || 0}%`
                             }}
