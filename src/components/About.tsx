@@ -2,7 +2,7 @@
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import CertificatesSection from '@/components/CertificatesSection';
-import aboutImage from '@/assets/about-ahmad.jpg';
+import aboutImage from '@/assets/about-image-new.jpg';
 
 interface AboutProps {
   isDark: boolean;
@@ -17,13 +17,13 @@ const About = ({ isDark }: AboutProps) => {
         </h2>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Image - mobile: top, desktop: left */}
-          <div className="order-1 lg:order-1 animate-slide-in-left">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
+          {/* Image - mobile: top, tablet & desktop: left */}
+          <div className="order-1 lg:order-1 sm:flex sm:justify-center lg:justify-start animate-slide-in-left">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl group animated-border-square">
               <img
                 src={aboutImage}
-                alt="Ahmad Limon - Full Stack Developer"
-                className="w-full h-[400px] sm:h-[500px] object-cover group-hover:scale-110 transition-transform duration-700"
+                alt="Hammad Ahmed - Full Stack Developer"
+                className="w-full max-w-[400px] sm:max-w-[450px] lg:max-w-full h-[400px] sm:h-[450px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-700 aspect-square"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent"></div>

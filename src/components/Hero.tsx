@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Instagram, MessageCircle, Facebook } from 'lucide-react';
+import heroImage from '@/assets/hero-image-new.jpg';
 
 interface HeroProps {
   isDark: boolean;
@@ -85,12 +86,12 @@ const Hero = ({ isDark, scrollToSection }: HeroProps) => {
           {/* Hero Image Section - Left on large screens, top on mobile */}
           <div className="flex-shrink-0 order-1 lg:order-1 lg:w-[45%]">
             <div className="relative">
-              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto relative group">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto relative group animated-border-round">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-md opacity-75 animate-pulse group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full blur-lg opacity-30 animate-pulse delay-1000"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-400 rounded-full blur-2xl opacity-20 animate-pulse delay-2000"></div>
                 <img
-                  src="https://i.postimg.cc/63s7XkPy/Whats-App-Image-2025-06-28-at-2-25-43-PM.jpg"
+                  src={heroImage}
                   alt="Hammad Ahmed - Full Stack Developer"
                   className="relative w-full h-full rounded-full object-cover border-4 lg:border-6 border-cyan-400 shadow-2xl transform group-hover:scale-105 glow-cyan pulse-glow transition-all duration-500"
                 />

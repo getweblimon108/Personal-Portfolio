@@ -38,6 +38,10 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Animated Border Colors */
+    --gradient-primary-start: 188 100% 42%;
+    --gradient-primary-end: 220 100% 50%;
+
     /* Skill Gradient Colors */
     --gradient-react: linear-gradient(135deg, #61DAFB, #21D4FD);
     --gradient-js: linear-gradient(135deg, #F7DF1E, #FFED4A);
@@ -781,4 +785,60 @@ All colors MUST be HSL.
 .dark .loading-skeleton {
   background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
   background-size: 200% 100%;
+}
+
+/* Animated Border Effects */
+.animated-border-round {
+  position: relative;
+  overflow: visible;
+}
+
+.animated-border-round::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  padding: 4px;
+  background: conic-gradient(
+    from 0deg, 
+    transparent, 
+    hsl(var(--gradient-primary-start)), 
+    transparent, 
+    hsl(var(--gradient-primary-end)), 
+    transparent
+  );
+  border-radius: 50%;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  animation: rotate-border 3s linear infinite;
+}
+
+.animated-border-square {
+  position: relative;
+  overflow: visible;
+}
+
+.animated-border-square::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  padding: 4px;
+  background: conic-gradient(
+    from 0deg, 
+    transparent, 
+    hsl(var(--gradient-primary-start)), 
+    transparent, 
+    hsl(var(--gradient-primary-end)), 
+    transparent
+  );
+  border-radius: 16px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  animation: rotate-border 4s linear infinite;
+}
+
+@keyframes rotate-border {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
