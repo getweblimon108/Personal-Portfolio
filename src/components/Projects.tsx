@@ -105,7 +105,7 @@ const Projects = ({ isDark }: ProjectsProps) => {
                   <Badge className="bg-cyan-400/90 text-gray-900">Featured</Badge>
                 </div>
               </div>
-              <CardContent className="p-6">
+              <CardContent className="p-6 flex flex-col h-full">
                 <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                   {project.title}
                 </h3>
@@ -124,7 +124,7 @@ const Projects = ({ isDark }: ProjectsProps) => {
                     </Badge>
                   ))}
                 </div>
-                <div className="flex space-x-3">
+                <div className="flex space-x-3 mt-auto">
                   <Button 
                     size="sm" 
                     variant="outline" 

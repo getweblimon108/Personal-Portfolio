@@ -28,6 +28,25 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [animatedValues, setAnimatedValues] = useState<{ [key: string]: number }>({});
 
+  const skillColors = {
+    'HTML/CSS': 'from-orange-500 to-red-500',
+    'JavaScript': 'from-yellow-400 to-orange-500',
+    'React': 'from-blue-400 to-cyan-500',
+    'Vue.js': 'from-green-400 to-emerald-500',
+    'Node.js': 'from-green-500 to-lime-500',
+    'Express': 'from-gray-600 to-gray-800',
+    'MongoDB': 'from-green-600 to-emerald-600',
+    'API Development': 'from-purple-500 to-indigo-500',
+    'Graphic Design': 'from-pink-500 to-rose-500',
+    'Video Editing': 'from-red-500 to-pink-500',
+    'Photo Editing': 'from-violet-500 to-purple-500',
+    'UI/UX Design': 'from-indigo-500 to-blue-500',
+    'Google Ads': 'from-blue-500 to-green-500',
+    'Meta Ads': 'from-blue-600 to-indigo-600',
+    'SEO': 'from-teal-500 to-cyan-500',
+    'Digital Marketing': 'from-amber-500 to-orange-500'
+  };
+
   const skills: Skill[] = [
     // Frontend
     { name: 'HTML/CSS', level: 95, icon: <Code className="w-5 h-5" />, category: 'frontend' },
@@ -107,7 +126,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
 
   return (
     <section 
-      id="skills-section" 
+      id="skills" 
       className={`py-20 px-4 ${isDark ? 'bg-gray-900' : 'bg-white'}`}
     >
       <div className="max-w-6xl mx-auto">
@@ -182,7 +201,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
                       </div>
                       <div className={`relative h-3 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
                         <div 
-                          className={`h-full rounded-full transition-all duration-1000 ease-out ${categories[key as keyof typeof categories].progressColor}`}
+                          className={`h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r ${skillColors[skill.name as keyof typeof skillColors]}`}
                           style={{ 
                             width: `${animatedValues[skill.name] || 0}%`,
                             transition: 'width 1s ease-out'

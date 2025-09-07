@@ -64,20 +64,31 @@ const Navigation = ({
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden hover:scale-110 hover:bg-cyan-400/20 transition-all duration-300 w-8 h-8 sm:w-10 sm:h-10 group"
+              className="md:hidden hover:scale-110 hover:bg-cyan-400/20 transition-all duration-300 w-8 h-8 sm:w-10 sm:h-10 group relative"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <div className="relative w-4 h-4 sm:w-5 sm:h-5">
-                <span className={`absolute left-0 top-0 w-full h-0.5 bg-current transform transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-45 translate-y-1.5' : 'translate-y-0'
+              <div className="relative w-5 h-5 flex flex-col justify-center items-center">
+                <span className={`block w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
+                  isMenuOpen 
+                    ? 'rotate-45 translate-y-0.5 bg-gradient-to-r from-cyan-400 to-blue-500' 
+                    : 'translate-y-0 shadow-sm'
                 }`}></span>
-                <span className={`absolute left-0 top-1.5 w-full h-0.5 bg-current transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0' : 'opacity-100'
+                <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ease-in-out ${
+                  isMenuOpen 
+                    ? 'opacity-0 scale-0' 
+                    : 'opacity-100 scale-100 mt-1.5 shadow-sm'
                 }`}></span>
-                <span className={`absolute left-0 top-3 w-full h-0.5 bg-current transform transition-all duration-300 ${
-                  isMenuOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-0'
+                <span className={`block w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
+                  isMenuOpen 
+                    ? '-rotate-45 -translate-y-0.5 bg-gradient-to-r from-cyan-400 to-blue-500' 
+                    : 'translate-y-0 mt-1.5 shadow-sm'
                 }`}></span>
               </div>
+              <div className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                isMenuOpen 
+                  ? 'bg-gradient-to-r from-cyan-400/20 to-blue-500/20 shadow-lg shadow-cyan-400/25' 
+                  : 'bg-transparent'
+              }`}></div>
             </Button>
           </div>
         </div>
