@@ -106,27 +106,25 @@ const Projects = ({ isDark }: ProjectsProps) => {
                 </div>
               </div>
               <CardContent className="p-6 flex flex-col h-full">
-                <div className="flex-grow">
-                  <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    {project.title}
-                  </h3>
-                  <p className={`mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, techIndex) => (
-                      <Badge 
-                        key={tech} 
-                        variant="secondary" 
-                        className="text-xs hover:scale-110 transition-transform duration-300 hover-lift"
-                        style={{ animationDelay: `${techIndex * 50}ms` }}
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
+                <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  {project.title}
+                </h3>
+                <p className={`mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.map((tech, techIndex) => (
+                    <Badge 
+                      key={tech} 
+                      variant="secondary" 
+                      className="text-xs hover:scale-110 transition-transform duration-300 hover-lift"
+                      style={{ animationDelay: `${techIndex * 50}ms` }}
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
                 </div>
-                <div className={`${isDark ? 'border-gray-600/60' : 'border-gray-200'} mt-auto pt-4 border-t`}>
+                <div className={`${isDark ? 'border-gray-600/60' : 'border-gray-200'} mt-6 pt-4 border-t`}>
                   <div className="flex gap-3">
                     <Button 
                       size="sm" 
