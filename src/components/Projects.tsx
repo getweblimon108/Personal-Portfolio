@@ -124,40 +124,42 @@ const Projects = ({ isDark }: ProjectsProps) => {
                     </Badge>
                   ))}
                 </div>
-                <div className="flex gap-3 mt-auto pt-4">
-                  <Button 
-                    size="sm" 
-                    variant="outline"
-                    asChild
-                    className={`flex-1 group/btn ${
-                      isDark 
-                        ? 'border-gray-500 text-gray-200 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-400/10' 
-                        : 'border-gray-400 text-gray-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50'
-                    }`}
-                  >
-                    <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} code on GitHub`}>
-                      <span className="inline-flex items-center">
-                        <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
-                        View Code
-                      </span>
-                    </a>
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    asChild
-                    className={`flex-1 group/btn ${
-                      isDark
-                        ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white'
-                        : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white'
-                    }`}
-                  >
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open live demo of ${project.title}`}>
-                      <span className="inline-flex items-center">
-                        <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                        Live Demo
-                      </span>
-                    </a>
-                  </Button>
+                <div className={`${isDark ? 'border-gray-600/60' : 'border-gray-200'} mt-6 pt-4 border-t`}>
+                  <div className="flex gap-3">
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      asChild
+                      className={`flex-1 group/btn ${
+                        isDark 
+                          ? 'border-gray-500 text-gray-200 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-400/10' 
+                          : 'border-gray-400 text-gray-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50'
+                      }`}
+                    >
+                      <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} code on GitHub`}>
+                        <span className="inline-flex items-center">
+                          <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
+                          View Code
+                        </span>
+                      </a>
+                    </Button>
+                    <Button 
+                      size="sm" 
+                      asChild
+                      className={`flex-1 group/btn ${
+                        isDark
+                          ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white'
+                      }`}
+                    >
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open live demo of ${project.title}`}>
+                        <span className="inline-flex items-center">
+                          <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                          Live Demo
+                        </span>
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
