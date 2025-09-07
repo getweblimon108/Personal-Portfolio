@@ -86,7 +86,7 @@ const Hero = ({ isDark, scrollToSection }: HeroProps) => {
           {/* Hero Image Section - Left on large screens, top on mobile */}
           <div className="flex-shrink-0 order-1 lg:order-1 lg:w-[45%]">
             <div className="relative">
-              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto relative group animated-border-round">
+              <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto relative group animated-border-round">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-md opacity-75 animate-pulse group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full blur-lg opacity-30 animate-pulse delay-1000"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-400 rounded-full blur-2xl opacity-20 animate-pulse delay-2000"></div>
