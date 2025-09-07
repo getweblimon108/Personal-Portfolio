@@ -3,8 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { ArrowLeft, Download, Code, Palette, Zap, Shield, Users, BarChart, Database, Monitor, Smartphone, Globe, FileText, Settings, Layout, MessageSquare } from 'lucide-react';
+import { ArrowLeft, Download, Code, Palette, Zap, Shield, Users, BarChart, Database, Monitor, Smartphone, Globe, FileText, Settings, Layout, MessageSquare, Eye } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import websiteScreenshot from '@/assets/website-screenshot.png';
 
 const WebsiteReport = () => {
   const navigate = useNavigate();
@@ -38,6 +39,35 @@ const WebsiteReport = () => {
       </div>
 
       <div className="container mx-auto px-4 py-8 space-y-12">
+        {/* Website Preview */}
+        <Card className="mb-8 overflow-hidden">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <Eye className="w-5 h-5 text-primary" />
+              </div>
+              <CardTitle className="text-2xl">Live Website Preview</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="relative rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700 shadow-xl">
+              <img 
+                src={websiteScreenshot} 
+                alt="Ahmad Limon Portfolio Website Screenshot" 
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute top-3 left-3 flex gap-2">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              </div>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-3 text-center">
+              Professional portfolio website with modern design, responsive layout, and enhanced gradient-based skill visualizations
+            </p>
+          </CardContent>
+        </Card>
+
         {/* Title Page */}
         <div className="text-center py-16 space-y-8">
           <div className="space-y-4">
