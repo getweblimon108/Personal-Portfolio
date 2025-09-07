@@ -64,29 +64,53 @@ const Navigation = ({
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden hover:scale-110 hover:bg-cyan-400/20 transition-all duration-300 w-8 h-8 sm:w-10 sm:h-10 group relative"
+              className="md:hidden relative overflow-hidden group w-12 h-12 rounded-2xl transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-400/25"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <div className="relative w-5 h-5 flex flex-col justify-center items-center">
-                <span className={`block w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
-                  isMenuOpen 
-                    ? 'rotate-45 translate-y-0.5 bg-gradient-to-r from-cyan-400 to-blue-500' 
-                    : 'translate-y-0 shadow-sm'
-                }`}></span>
-                <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ease-in-out ${
-                  isMenuOpen 
-                    ? 'opacity-0 scale-0' 
-                    : 'opacity-100 scale-100 mt-1.5 shadow-sm'
-                }`}></span>
-                <span className={`block w-6 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
-                  isMenuOpen 
-                    ? '-rotate-45 -translate-y-0.5 bg-gradient-to-r from-cyan-400 to-blue-500' 
-                    : 'translate-y-0 mt-1.5 shadow-sm'
-                }`}></span>
-              </div>
-              <div className={`absolute inset-0 rounded-full transition-all duration-300 ${
+              {/* Magnetic background effect */}
+              <div className={`absolute inset-0 rounded-2xl transition-all duration-700 ease-out ${
                 isMenuOpen 
-                  ? 'bg-gradient-to-r from-cyan-400/20 to-blue-500/20 shadow-lg shadow-cyan-400/25' 
+                  ? 'bg-gradient-to-br from-cyan-500/30 via-blue-500/20 to-purple-500/30 scale-110 rotate-180' 
+                  : 'bg-gradient-to-br from-transparent to-transparent scale-100 rotate-0 group-hover:from-cyan-400/10 group-hover:to-blue-400/10 group-hover:scale-105'
+              }`}></div>
+              
+              {/* Animated icon container */}
+              <div className="relative w-6 h-6 flex items-center justify-center">
+                {/* Top line */}
+                <span className={`absolute w-5 h-0.5 rounded-full transition-all duration-500 ease-out transform-gpu ${
+                  isMenuOpen 
+                    ? 'rotate-45 translate-y-0 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-lg shadow-cyan-400/50' 
+                    : 'translate-y-[-6px] rotate-0 bg-current group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-500 group-hover:shadow-md group-hover:shadow-cyan-400/30'
+                }`}></span>
+                
+                {/* Middle line */}
+                <span className={`absolute w-5 h-0.5 rounded-full transition-all duration-500 ease-out transform-gpu ${
+                  isMenuOpen 
+                    ? 'scale-0 opacity-0 rotate-180' 
+                    : 'scale-100 opacity-100 rotate-0 bg-current group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-500 group-hover:shadow-md group-hover:shadow-cyan-400/30'
+                }`}></span>
+                
+                {/* Bottom line */}
+                <span className={`absolute w-5 h-0.5 rounded-full transition-all duration-500 ease-out transform-gpu ${
+                  isMenuOpen 
+                    ? '-rotate-45 translate-y-0 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-lg shadow-cyan-400/50' 
+                    : 'translate-y-[6px] rotate-0 bg-current group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-500 group-hover:shadow-md group-hover:shadow-cyan-400/30'
+                }`}></span>
+                
+                {/* Floating particles effect */}
+                <div className={`absolute inset-0 transition-all duration-700 ${
+                  isMenuOpen ? 'opacity-100' : 'opacity-0'
+                }`}>
+                  <div className="absolute top-1 left-1 w-1 h-1 bg-cyan-400 rounded-full animate-pulse"></div>
+                  <div className="absolute top-2 right-1 w-0.5 h-0.5 bg-blue-400 rounded-full animate-ping"></div>
+                  <div className="absolute bottom-1 left-2 w-0.5 h-0.5 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                </div>
+              </div>
+              
+              {/* Ripple effect on click */}
+              <div className={`absolute inset-0 rounded-2xl transition-all duration-300 ${
+                isMenuOpen 
+                  ? 'bg-gradient-to-r from-cyan-400/20 to-blue-500/20 animate-pulse' 
                   : 'bg-transparent'
               }`}></div>
             </Button>
