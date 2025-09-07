@@ -134,10 +134,10 @@ const Projects = ({ isDark }: ProjectsProps) => {
                         ? 'border-gray-500 text-gray-200 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-400/10 bg-transparent' 
                         : 'border-gray-400 text-gray-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 bg-white'
                     }`}
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
-                  </Button>
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      View Code
+                    </Button>
                   <Button 
                     size="sm" 
                     onClick={() => window.open(project.liveUrl, '_blank')}
