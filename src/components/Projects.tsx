@@ -124,30 +124,30 @@ const Projects = ({ isDark }: ProjectsProps) => {
                     </Badge>
                   ))}
                 </div>
-                <div className="flex space-x-3 mt-auto pt-4">
+                <div className="flex gap-3 mt-auto pt-4">
                   <Button 
                     size="sm" 
                     variant="outline" 
                     onClick={() => window.open(project.codeUrl, '_blank')}
-                    className={`flex-1 transition-all duration-300 ${
+                    className={`flex-1 group/btn ${
                       isDark 
-                        ? 'border-gray-500 text-gray-200 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-400/10 bg-transparent' 
-                        : 'border-gray-400 text-gray-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 bg-white'
+                        ? 'border-gray-500 text-gray-200 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-400/10' 
+                        : 'border-gray-400 text-gray-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50'
                     }`}
                   >
-                    <Github className="w-4 h-4 mr-2" />
+                    <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
                     View Code
                   </Button>
                   <Button 
                     size="sm" 
                     onClick={() => window.open(project.liveUrl, '_blank')}
-                    className={`flex-1 transition-all duration-300 ${
+                    className={`flex-1 group/btn ${
                       isDark
-                        ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0'
-                        : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0'
+                        ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white'
+                        : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white'
                     }`}
                   >
-                    <ExternalLink className="w-4 h-4 mr-2" />
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
                     Live Demo
                   </Button>
                 </div>
