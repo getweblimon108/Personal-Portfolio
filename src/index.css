@@ -38,6 +38,30 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Skill Gradient Colors */
+    --gradient-react: linear-gradient(135deg, #61DAFB, #21D4FD);
+    --gradient-js: linear-gradient(135deg, #F7DF1E, #FFED4A);
+    --gradient-html: linear-gradient(135deg, #E34F26, #F16529);
+    --gradient-css: linear-gradient(135deg, #1572B6, #33A9DC);
+    --gradient-ts: linear-gradient(135deg, #3178C6, #5A99D4);
+    --gradient-node: linear-gradient(135deg, #339933, #68A063);
+    --gradient-express: linear-gradient(135deg, #404040, #666666);
+    --gradient-mongo: linear-gradient(135deg, #47A248, #4DB33D);
+    --gradient-tailwind: linear-gradient(135deg, #06B6D4, #38BDF8);
+    --gradient-bootstrap: linear-gradient(135deg, #7952B3, #9C7AEB);
+    --gradient-github: linear-gradient(135deg, #181717, #4A4A4A);
+    --gradient-vercel: linear-gradient(135deg, #000000, #333333);
+
+    /* Category Gradients */
+    --gradient-frontend: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-backend: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-frameworks: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-tools: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+
+    /* Skill Card Gradients */
+    --gradient-card-light: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%);
+    --gradient-card-border: linear-gradient(135deg, rgba(99,102,241,0.2) 0%, rgba(139,92,246,0.2) 100%);
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -76,6 +100,30 @@ All colors MUST be HSL.
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 188 100% 50%;
+
+    /* Dark Mode Skill Gradients */
+    --gradient-react: linear-gradient(135deg, #61DAFB, #21D4FD);
+    --gradient-js: linear-gradient(135deg, #F7DF1E, #FFED4A);
+    --gradient-html: linear-gradient(135deg, #E34F26, #F16529);
+    --gradient-css: linear-gradient(135deg, #1572B6, #33A9DC);
+    --gradient-ts: linear-gradient(135deg, #3178C6, #5A99D4);
+    --gradient-node: linear-gradient(135deg, #339933, #68A063);
+    --gradient-express: linear-gradient(135deg, #606060, #888888);
+    --gradient-mongo: linear-gradient(135deg, #47A248, #4DB33D);
+    --gradient-tailwind: linear-gradient(135deg, #06B6D4, #38BDF8);
+    --gradient-bootstrap: linear-gradient(135deg, #7952B3, #9C7AEB);
+    --gradient-github: linear-gradient(135deg, #333333, #666666);
+    --gradient-vercel: linear-gradient(135deg, #222222, #555555);
+
+    /* Dark Mode Category Gradients */
+    --gradient-frontend: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-backend: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-frameworks: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-tools: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+
+    /* Dark Mode Skill Card Gradients */
+    --gradient-card-light: linear-gradient(135deg, rgba(31,41,55,0.95) 0%, rgba(17,24,39,0.9) 100%);
+    --gradient-card-border: linear-gradient(135deg, rgba(99,102,241,0.3) 0%, rgba(139,92,246,0.3) 100%);
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
