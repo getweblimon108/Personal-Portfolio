@@ -1,9 +1,6 @@
 
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ExternalLink } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import CertificatesSection from '@/components/CertificatesSection';
 import aboutImage from '@/assets/about-ahmad.jpg';
 
@@ -12,8 +9,6 @@ interface AboutProps {
 }
 
 const About = ({ isDark }: AboutProps) => {
-  const navigate = useNavigate();
-
   return (
     <section id="about" className={`py-20 px-4 ${isDark ? 'bg-gray-900/50' : 'bg-gray-50'}`}>
       <div className="max-w-6xl mx-auto">
@@ -72,20 +67,9 @@ const About = ({ isDark }: AboutProps) => {
               <p className={`mb-4 text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                 As a certified full-stack web developer, I bring together technical expertise and creative vision to deliver exceptional digital solutions.
               </p>
-              <p className={`mb-6 text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className={`mb-4 text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                 My experience spans across modern web technologies, UI/UX design, and multimedia content creation.
               </p>
-              
-              {/* Website Report Button */}
-              <div className="mt-6">
-                <Button 
-                  onClick={() => navigate('/report')}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-                >
-                  View Website Development Report
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
             </div>
           </div>
         </div>

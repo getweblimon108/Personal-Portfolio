@@ -42,7 +42,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'frontend', 
-      color: 'var(--gradient-react)' 
+      color: 'from-[#61DAFB] to-[#21D4FD]' 
     },
     { 
       name: 'JavaScript', 
@@ -53,7 +53,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'frontend', 
-      color: 'var(--gradient-javascript)' 
+      color: 'from-[#F7DF1E] to-[#FFED4A]' 
     },
     { 
       name: 'HTML5', 
@@ -64,7 +64,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'frontend', 
-      color: 'var(--gradient-html)' 
+      color: 'from-[#E34F26] to-[#F16529]' 
     },
     { 
       name: 'CSS3', 
@@ -75,7 +75,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'frontend', 
-      color: 'var(--gradient-css)' 
+      color: 'from-[#1572B6] to-[#33A9DC]' 
     },
     { 
       name: 'TypeScript', 
@@ -86,7 +86,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'frontend', 
-      color: 'var(--gradient-typescript)' 
+      color: 'from-[#3178C6] to-[#5A99D4]' 
     },
     
     // Backend Development
@@ -99,7 +99,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'backend', 
-      color: 'var(--gradient-node)' 
+      color: 'from-[#339933] to-[#68A063]' 
     },
     { 
       name: 'Express', 
@@ -110,7 +110,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'backend', 
-      color: 'var(--gradient-express)' 
+      color: 'from-gray-700 to-gray-900' 
     },
     { 
       name: 'MongoDB', 
@@ -121,7 +121,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'backend', 
-      color: 'var(--gradient-mongodb)' 
+      color: 'from-[#47A248] to-[#4DB33D]' 
     },
     
     // UI Frameworks & Libraries
@@ -134,7 +134,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'frameworks', 
-      color: 'var(--gradient-tailwind)' 
+      color: 'from-[#06B6D4] to-[#38BDF8]' 
     },
     { 
       name: 'Bootstrap', 
@@ -147,7 +147,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'frameworks', 
-      color: 'var(--gradient-bootstrap)' 
+      color: 'from-[#7952B3] to-[#9C7AEB]' 
     },
     
     // Tools & Platforms
@@ -160,7 +160,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'tools', 
-      color: 'var(--gradient-github)' 
+      color: 'from-gray-700 to-gray-500' 
     },
     { 
       name: 'Vercel', 
@@ -171,7 +171,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
         </svg>
       ), 
       category: 'tools', 
-      color: 'var(--gradient-vercel)' 
+      color: 'from-gray-800 to-gray-600' 
     }
   ];
 
@@ -295,10 +295,9 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
                       <div className="flex items-center gap-3 flex-1">
                         <div className={`flex-1 h-3 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
                           <div 
-                            className="h-full rounded-full transition-all duration-1000 ease-out shadow-lg"
+                            className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out shadow-lg`}
                             style={{ 
-                              width: `${animatedValues[skill.name] || 0}%`,
-                              background: skill.color
+                              width: `${animatedValues[skill.name] || 0}%`
                             }}
                           />
                         </div>
