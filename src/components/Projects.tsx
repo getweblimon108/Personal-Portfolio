@@ -1,9 +1,11 @@
 
 import React from 'react';
+import { motion, type Variants } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Github, ExternalLink } from 'lucide-react';
+import LazyImage from '@/components/LazyImage';
 import ecommerceProject from '@/assets/ecommerce-project.png';
 
 interface ProjectsProps {
@@ -78,93 +80,134 @@ const Projects = ({ isDark }: ProjectsProps) => {
     }
   ];
 
-  return (
-    <section id="projects" className={`py-20 px-4 ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
-      <div className="max-w-6xl mx-auto">
-        <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in ${isDark ? 'text-white' : 'text-gray-900'}`}>
-          Featured Projects
-        </h2>
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
+  return (
+    <section id="projects" className={`py-12 sm:py-16 lg:py-20 px-3 sm:px-4 ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+      <div className="max-w-6xl mx-auto">
+        <motion.h2 
+          className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Featured Projects
+        </motion.h2>
+
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {projects.map((project, index) => (
-            <Card
+            <motion.div
               key={project.title}
-              className={`overflow-hidden transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift ${
-                isDark ? 'bg-gray-700 border-gray-600 hover:border-cyan-400/50' : 'bg-white hover:border-blue-500/50'
-              } hover:shadow-2xl glow-cyan`}
-              style={{ animationDelay: `${index * 200}ms` }}
+              variants={itemVariants}
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
-                  <Badge className="bg-cyan-400/90 text-gray-900">Featured</Badge>
+              <Card
+                className={`overflow-hidden transition-all duration-500 hover:scale-105 transform group h-full ${
+                  isDark ? 'bg-gray-700 border-gray-600 hover:border-cyan-400/50' : 'bg-white hover:border-blue-500/50'
+                } hover:shadow-2xl glow-cyan`}
+              >
+                <div className="relative overflow-hidden">
+                  <LazyImage
+                    src={typeof project.image === 'string' ? project.image : project.image}
+                    alt={`${project.title} - Project Screenshot`}
+                    className="w-full h-40 sm:h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    width={400}
+                    height={200}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                  <motion.div 
+                    className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    initial={{ x: 20, opacity: 0 }}
+                    whileHover={{ x: 0, opacity: 1 }}
+                  >
+                    <Badge className="bg-cyan-400/90 text-gray-900">Featured</Badge>
+                  </motion.div>
                 </div>
-              </div>
-              <CardContent className="p-6 flex flex-col h-full">
-                <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                  {project.title}
-                </h3>
-                <p className={`mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, techIndex) => (
-                    <Badge 
-                      key={tech} 
-                      variant="secondary" 
-                      className="text-xs hover:scale-110 transition-transform duration-300 hover-lift"
-                      style={{ animationDelay: `${techIndex * 50}ms` }}
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <div className={`${isDark ? 'border-gray-600/60' : 'border-gray-200'} mt-6 pt-4 border-t`}>
-                  <div className="flex gap-3">
-                    <Button 
-                      size="sm" 
-                      variant="outline"
-                      asChild
-                      className={`flex-1 group/btn ${
-                        isDark 
-                          ? 'border-gray-500 text-gray-200 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-400/10' 
-                          : 'border-gray-400 text-gray-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50'
-                      }`}
-                    >
-                      <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} code on GitHub`}>
-                        <span className="inline-flex items-center">
-                          <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
-                          View Code
-                        </span>
-                      </a>
-                    </Button>
-                    <Button 
-                      size="sm" 
-                      asChild
-                      className={`flex-1 group/btn ${
-                        isDark
-                          ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white'
-                          : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white'
-                      }`}
-                    >
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open live demo of ${project.title}`}>
-                        <span className="inline-flex items-center">
-                          <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                          Live Demo
-                        </span>
-                      </a>
-                    </Button>
+                <CardContent className="p-4 sm:p-6 flex flex-col h-full">
+                  <h3 className={`text-lg sm:text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    {project.title}
+                  </h3>
+                  <p className={`mb-4 text-sm sm:text-base flex-grow ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
+                    {project.tech.map((tech, techIndex) => (
+                      <Badge 
+                        key={tech} 
+                        variant="secondary" 
+                        className="text-xs hover:scale-110 transition-transform duration-300 hover-lift"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className={`${isDark ? 'border-gray-600/60' : 'border-gray-200'} mt-auto pt-4 border-t`}>
+                    <div className="flex gap-2 sm:gap-3">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        asChild
+                        className={`flex-1 group/btn text-xs sm:text-sm ${
+                          isDark 
+                            ? 'border-gray-500 text-gray-200 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-400/10' 
+                            : 'border-gray-400 text-gray-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50'
+                        }`}
+                      >
+                        <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} code on GitHub`}>
+                          <span className="inline-flex items-center">
+                            <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 group-hover/btn:rotate-12 transition-transform" />
+                            Code
+                          </span>
+                        </a>
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        asChild
+                        className={`flex-1 group/btn text-xs sm:text-sm ${
+                          isDark
+                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white'
+                            : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white'
+                        }`}
+                      >
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open live demo of ${project.title}`}>
+                          <span className="inline-flex items-center">
+                            <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 group-hover/btn:scale-110 transition-transform" />
+                            Demo
+                          </span>
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
