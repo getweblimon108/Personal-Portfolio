@@ -12,30 +12,36 @@ const CertificatesSection = ({ isDark }: { isDark: boolean }) => {
   const hpCertificates = [
     {
       id: 1,
+      image: "/lovable-uploads/f40fdbab-0a8e-49bb-a7ad-7de67d2a7e10.png",
+      title: "HP LIFE - Business Email",
+      description: "Business Email certification - Professional email communication skills"
+    },
+    {
+      id: 2,
       image: "https://i.postimg.cc/7LqVpKd9/certificate-1.png",
       title: "HP LIFE Certificate 1",
       description: "Professional development certification"
     },
     {
-      id: 2,
+      id: 3,
       image: "https://i.postimg.cc/WzSFq7XN/certificate-2.png",
       title: "HP LIFE Certificate 2",
       description: "Advanced skills certification"
     },
     {
-      id: 3,
+      id: 4,
       image: "https://i.postimg.cc/cLfWDJGY/certificate-3.png",
       title: "HP LIFE Certificate 3",
       description: "Technical excellence certification"
     },
     {
-      id: 4,
+      id: 5,
       image: "https://i.postimg.cc/ZRxFjpVg/certificate-5.png",
       title: "HP LIFE Certificate 4", 
       description: "Leadership and innovation certification"
     },
     {
-      id: 5,
+      id: 6,
       image: "https://i.postimg.cc/sXLfk06Z/certificate.png",
       title: "HP LIFE Certificate 5",
       description: "Comprehensive skill development certification"
@@ -81,7 +87,7 @@ const CertificatesSection = ({ isDark }: { isDark: boolean }) => {
                   <p className={`mb-4 transition-all duration-300 group-hover:scale-105 ${
                     isDark ? 'text-gray-200 group-hover:text-white' : 'text-gray-700 group-hover:text-gray-900'
                   }`}>
-                    View collection of 5 professional certificates
+                    View collection of 6 professional certificates
                   </p>
                    <Badge className={`group-hover:animate-bounce transition-all duration-300 ${
                      isDark 
