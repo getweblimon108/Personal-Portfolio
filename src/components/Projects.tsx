@@ -124,7 +124,7 @@ const Projects = ({ isDark }: ProjectsProps) => {
                     </Badge>
                   ))}
                 </div>
-                <div className="flex space-x-3 mt-auto">
+                <div className="flex space-x-3 mt-auto pt-4">
                   <Button 
                     size="sm" 
                     variant="outline" 

@@ -36,7 +36,7 @@ const Navigation = ({
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6 lg:space-x-8">
-            {['home', 'about', 'skills', 'projects', 'services', 'contact'].map((item) => (
+            {['home', 'about', 'skills-section', 'projects', 'services', 'contact'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
@@ -44,7 +44,7 @@ const Navigation = ({
                   activeSection === item ? 'text-cyan-400 scale-110' : isDark ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                {item}
+                {item === 'skills-section' ? 'skills' : item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
@@ -99,7 +99,7 @@ const Navigation = ({
         isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       } ${isDark ? 'bg-gray-800/95' : 'bg-gray-50/95'} backdrop-blur-xl border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          {['home', 'about', 'skills', 'projects', 'services', 'contact'].map((item, index) => (
+          {['home', 'about', 'skills-section', 'projects', 'services', 'contact'].map((item, index) => (
             <button
               key={item}
               onClick={() => {
@@ -114,7 +114,7 @@ const Navigation = ({
                 transform: isMenuOpen ? 'translateY(0)' : 'translateY(-20px)'
               }}
             >
-              {item}
+              {item === 'skills-section' ? 'skills' : item}
             </button>
           ))}
         </div>

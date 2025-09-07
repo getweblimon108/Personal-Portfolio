@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { 
   Code, 
@@ -10,7 +9,10 @@ import {
   Globe,
   Server,
   Smartphone,
-  Cpu
+  Cpu,
+  FileCode,
+  Layers,
+  Wrench
 } from 'lucide-react';
 
 interface SkillsSectionProps {
@@ -21,63 +23,57 @@ interface Skill {
   name: string;
   level: number;
   icon: React.ReactNode;
-  category: 'frontend' | 'backend' | 'design' | 'tools';
+  category: 'frontend' | 'backend' | 'frameworks' | 'tools';
+  color: string;
 }
 
 const SkillsSection = ({ isDark }: SkillsSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [animatedValues, setAnimatedValues] = useState<{ [key: string]: number }>({});
 
-  const skillColors = {
-    'HTML/CSS': 'from-orange-500 to-red-500',
-    'JavaScript': 'from-yellow-400 to-orange-500',
-    'React': 'from-blue-400 to-cyan-500',
-    'Vue.js': 'from-green-400 to-emerald-500',
-    'Node.js': 'from-green-500 to-lime-500',
-    'Express': 'from-gray-600 to-gray-800',
-    'MongoDB': 'from-green-600 to-emerald-600',
-    'API Development': 'from-purple-500 to-indigo-500',
-    'Graphic Design': 'from-pink-500 to-rose-500',
-    'Video Editing': 'from-red-500 to-pink-500',
-    'Photo Editing': 'from-violet-500 to-purple-500',
-    'UI/UX Design': 'from-indigo-500 to-blue-500',
-    'Google Ads': 'from-blue-500 to-green-500',
-    'Meta Ads': 'from-blue-600 to-indigo-600',
-    'SEO': 'from-teal-500 to-cyan-500',
-    'Digital Marketing': 'from-amber-500 to-orange-500'
-  };
-
   const skills: Skill[] = [
-    // Frontend
-    { name: 'HTML/CSS', level: 95, icon: <Code className="w-5 h-5" />, category: 'frontend' },
-    { name: 'JavaScript', level: 90, icon: <Code className="w-5 h-5" />, category: 'frontend' },
-    { name: 'React', level: 88, icon: <Code className="w-5 h-5" />, category: 'frontend' },
-    { name: 'Vue.js', level: 85, icon: <Code className="w-5 h-5" />, category: 'frontend' },
+    // Frontend Development
+    { name: 'React', level: 90, icon: <FileCode className="w-5 h-5" />, category: 'frontend', color: 'bg-[#61DAFB]' },
+    { name: 'JavaScript', level: 85, icon: <FileCode className="w-5 h-5" />, category: 'frontend', color: 'bg-[#F7DF1E]' },
+    { name: 'HTML5', level: 95, icon: <Code className="w-5 h-5" />, category: 'frontend', color: 'bg-[#E34F26]' },
+    { name: 'CSS3', level: 90, icon: <Palette className="w-5 h-5" />, category: 'frontend', color: 'bg-[#1572B6]' },
+    { name: 'TypeScript', level: 85, icon: <FileCode className="w-5 h-5" />, category: 'frontend', color: 'bg-[#3178C6]' },
     
-    // Backend
-    { name: 'Node.js', level: 82, icon: <Server className="w-5 h-5" />, category: 'backend' },
-    { name: 'Express', level: 80, icon: <Server className="w-5 h-5" />, category: 'backend' },
-    { name: 'MongoDB', level: 78, icon: <Database className="w-5 h-5" />, category: 'backend' },
-    { name: 'API Development', level: 85, icon: <Globe className="w-5 h-5" />, category: 'backend' },
+    // Backend Development
+    { name: 'Node.js', level: 80, icon: <Server className="w-5 h-5" />, category: 'backend', color: 'bg-[#339933]' },
+    { name: 'Express', level: 75, icon: <Server className="w-5 h-5" />, category: 'backend', color: 'bg-[#000000]' },
+    { name: 'MongoDB', level: 85, icon: <Database className="w-5 h-5" />, category: 'backend', color: 'bg-[#47A248]' },
     
-    // Design
-    { name: 'Graphic Design', level: 92, icon: <Palette className="w-5 h-5" />, category: 'design' },
-    { name: 'Video Editing', level: 88, icon: <Palette className="w-5 h-5" />, category: 'design' },
-    { name: 'Photo Editing', level: 90, icon: <Palette className="w-5 h-5" />, category: 'design' },
-    { name: 'UI/UX Design', level: 85, icon: <Smartphone className="w-5 h-5" />, category: 'design' },
+    // UI Frameworks & Libraries
+    { name: 'Tailwind CSS', level: 90, icon: <Layers className="w-5 h-5" />, category: 'frameworks', color: 'bg-[#06B6D4]' },
+    { name: 'Bootstrap', level: 85, icon: <Layers className="w-5 h-5" />, category: 'frameworks', color: 'bg-[#7952B3]' },
     
-    // Tools & Marketing
-    { name: 'Google Ads', level: 87, icon: <Settings className="w-5 h-5" />, category: 'tools' },
-    { name: 'Meta Ads', level: 85, icon: <Settings className="w-5 h-5" />, category: 'tools' },
-    { name: 'SEO', level: 83, icon: <Globe className="w-5 h-5" />, category: 'tools' },
-    { name: 'Digital Marketing', level: 86, icon: <Cpu className="w-5 h-5" />, category: 'tools' }
+    // Tools & Platforms
+    { name: 'GitHub', level: 88, icon: <Wrench className="w-5 h-5" />, category: 'tools', color: 'bg-[#181717]' },
+    { name: 'Vercel', level: 82, icon: <Globe className="w-5 h-5" />, category: 'tools', color: 'bg-[#000000]' }
   ];
 
   const categories = {
-    frontend: { name: 'Frontend', color: 'from-blue-500 to-cyan-400', progressColor: 'bg-gradient-to-r from-blue-500 to-cyan-400' },
-    backend: { name: 'Backend', color: 'from-green-500 to-emerald-400', progressColor: 'bg-gradient-to-r from-green-500 to-emerald-400' },
-    design: { name: 'Design', color: 'from-purple-500 to-pink-400', progressColor: 'bg-gradient-to-r from-purple-500 to-pink-400' },
-    tools: { name: 'Tools & Marketing', color: 'from-orange-500 to-red-400', progressColor: 'bg-gradient-to-r from-orange-500 to-red-400' }
+    frontend: { 
+      name: 'Frontend Development', 
+      color: 'from-blue-600 to-purple-600',
+      icon: <Code className="w-6 h-6 text-white" />
+    },
+    backend: { 
+      name: 'Backend Development', 
+      color: 'from-green-600 to-teal-600',
+      icon: <Server className="w-6 h-6 text-white" />
+    },
+    frameworks: { 
+      name: 'UI Frameworks & Libraries', 
+      color: 'from-purple-600 to-pink-600',
+      icon: <Layers className="w-6 h-6 text-white" />
+    },
+    tools: { 
+      name: 'Tools & Platforms', 
+      color: 'from-orange-600 to-red-600',
+      icon: <Wrench className="w-6 h-6 text-white" />
+    }
   };
 
   useEffect(() => {
@@ -126,7 +122,7 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
 
   return (
     <section 
-      id="skills" 
+      id="skills-section" 
       className={`py-20 px-4 ${isDark ? 'bg-gray-900' : 'bg-white'}`}
     >
       <div className="max-w-6xl mx-auto">
@@ -142,66 +138,55 @@ const SkillsSection = ({ isDark }: SkillsSectionProps) => {
           </p>
         </div>
 
-        {/* Category Overview */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {Object.entries(categories).map(([key, category]) => (
-            <Card 
-              key={key}
-              className={`text-center transition-all duration-500 hover:scale-105 ${
-                isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
-              } hover:shadow-xl hover-lift`}
-            >
-              <CardContent className="p-6">
-                <div className={`text-3xl font-bold bg-gradient-to-r ${category.color} bg-clip-text text-transparent mb-2`}>
-                  {getCategoryAverage(key as keyof typeof categories)}%
-                </div>
-                <h3 className={`text-sm font-semibold ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                  {category.name}
-                </h3>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Skills Grid - Responsive Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {Object.entries(categories).map(([key, category]) => (
             <Card 
               key={key}
               className={`transition-all duration-500 ${
-                isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
-              } hover:shadow-xl hover-lift`}
+                isDark ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200'
+              } hover:shadow-xl hover-lift backdrop-blur-sm`}
             >
               <CardContent className="p-6">
+                {/* Category Header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color}`}>
-                    {getSkillsByCategory(key as keyof typeof categories)[0]?.icon}
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.color} shadow-lg`}>
+                    {category.icon}
                   </div>
-                  <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    {category.name}
-                  </h3>
+                  <div>
+                    <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                      {category.name}
+                    </h3>
+                    <div className="text-sm text-muted-foreground">
+                      {getCategoryAverage(key as keyof typeof categories)}% Average
+                    </div>
+                  </div>
                 </div>
 
+                {/* Skills List */}
                 <div className="space-y-4">
-                  {getSkillsByCategory(key as keyof typeof categories).map((skill) => (
+                  {getSkillsByCategory(key as keyof typeof categories).map((skill, index) => (
                     <div key={skill.name} className="group">
                       <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-primary">{skill.icon}</span>
+                        <div className="flex items-center gap-3">
+                          <div className={`w-8 h-8 rounded-lg ${skill.color} flex items-center justify-center shadow-md`}>
+                            <span className="text-white text-xs font-bold">
+                              {skill.name.slice(0, 2).toUpperCase()}
+                            </span>
+                          </div>
                           <span className={`text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                             {skill.name}
                           </span>
                         </div>
-                        <Badge 
-                          variant="secondary" 
-                          className="text-xs opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
-                          {skill.level}%
-                        </Badge>
+                        <div className="flex items-center gap-2">
+                          <span className={`text-sm font-bold ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
+                            {skill.level}%
+                          </span>
+                        </div>
                       </div>
-                      <div className={`relative h-3 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
+                      <div className={`relative h-2 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
                         <div 
-                          className={`h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r ${skillColors[skill.name as keyof typeof skillColors]}`}
+                          className={`h-full rounded-full transition-all duration-1000 ease-out ${skill.color}`}
                           style={{ 
                             width: `${animatedValues[skill.name] || 0}%`,
                             transition: 'width 1s ease-out'
