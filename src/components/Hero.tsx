@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Github, Linkedin, Instagram, MessageCircle, Facebook } from 'lucide-react';
+import { Github, Linkedin, Instagram, MessageCircle, Facebook, Download } from 'lucide-react';
 import heroImage from '@/assets/hero-image-new.jpg';
 
 interface HeroProps {
@@ -79,12 +79,37 @@ const Hero = ({ isDark, scrollToSection }: HeroProps) => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20">
-      <div className="max-w-6xl mx-auto w-full animate-fade-in">
+    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.5, 0.3, 0.5],
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
           
-          {/* Hero Image Section - Left on large screens, top on mobile */}
-          <div className="flex-shrink-0 order-1 lg:order-1 lg:w-[45%]">
+          {/* Hero Image Section */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex-shrink-0 order-1 lg:order-1 lg:w-[45%]"
+          >
             <div className="relative">
               <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto relative group animated-border-round">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-md opacity-75 animate-pulse group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -97,10 +122,15 @@ const Hero = ({ isDark, scrollToSection }: HeroProps) => {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Content Section - Right on large screens, bottom on mobile */}
-          <div className="flex-1 text-center lg:text-left order-2 lg:order-2">
+          {/* Content Section */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex-1 text-center lg:text-left order-2 lg:order-2"
+          >
             <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 sm:mb-4 ${isDark ? 'text-white' : 'text-gray-900'} animate-scale-in`}>
               {typedText}
               <span className="animate-pulse text-cyan-400">|</span>
@@ -124,46 +154,70 @@ const Hero = ({ isDark, scrollToSection }: HeroProps) => {
               Let's bring your ideas to life with creative solutions that make an impact.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8 animate-fade-in delay-500">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8"
+            >
               <Button 
                 onClick={() => scrollToSection('projects')}
-                className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 glow-cyan hover-lift border-0"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-0"
               >
                 View My Work
               </Button>
               <Button 
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold border-2 transition-all duration-300 hover:scale-105 hover-lift ${
+                className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold border-2 transition-all duration-300 hover:scale-105 ${
                   isDark 
-                    ? 'border-cyan-400 text-cyan-400 bg-transparent hover:bg-cyan-400 hover:text-gray-900 hover:shadow-[0_0_20px_rgba(0,229,255,0.5)]' 
-                    : 'border-blue-500 text-blue-500 bg-white hover:bg-blue-500 hover:text-white hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]'
+                    ? 'border-primary text-primary bg-transparent hover:bg-primary hover:text-gray-900' 
+                    : 'border-primary text-primary bg-white hover:bg-primary hover:text-white'
                 }`}
               >
                 Get In Touch
               </Button>
-            </div>
+              <Button 
+                variant="outline"
+                asChild
+                className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold border-2 transition-all duration-300 hover:scale-105 ${
+                  isDark 
+                    ? 'border-accent text-accent bg-transparent hover:bg-accent hover:text-gray-900' 
+                    : 'border-accent text-accent bg-white hover:bg-accent hover:text-white'
+                }`}
+              >
+                <a href="/resume.pdf" download>
+                  <Download className="w-5 h-5 mr-2" />
+                  Resume
+                </a>
+              </Button>
+            </motion.div>
 
-            <div className="flex justify-center lg:justify-start space-x-3 sm:space-x-4 md:space-x-6 animate-fade-in delay-700">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="flex justify-center lg:justify-start space-x-3 sm:space-x-4 md:space-x-6"
+            >
               {socialLinks.map((social, index) => (
-                <a
+                <motion.a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
+                  whileHover={{ scale: 1.2, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
                   className={`p-2 sm:p-3 rounded-full ${isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'} 
-                    transition-all duration-300 hover:scale-125 transform hover:-translate-y-2 
-                    ${social.color} hover:shadow-lg group glow-cyan hover-lift pulse-glow`}
-                  style={{ animationDelay: `${index * 100}ms` }}
+                    transition-all duration-300 ${social.color} hover:shadow-lg group`}
                 >
                   <div className="group-hover:animate-pulse">
                     {social.icon}
                   </div>
-                </a>
+                </motion.a>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           
         </div>
       </div>
