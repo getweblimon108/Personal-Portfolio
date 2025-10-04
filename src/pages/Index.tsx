@@ -10,8 +10,6 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import EnhancedFloatingElements from '@/components/EnhancedFloatingElements';
 import SkillsSection from '@/components/SkillsSection';
-import Testimonials from '@/components/Testimonials';
-import GitHubStats from '@/components/GitHubStats';
 
 const Index = () => {
   // Load dark mode preference from localStorage
@@ -104,9 +102,7 @@ const Index = () => {
           <SkillsSection isDark={isDark} />
 
           <Projects isDark={isDark} />
-          <GitHubStats isDark={isDark} />
           <EnhancedServices isDark={isDark} />
-          <Testimonials isDark={isDark} />
           <Contact isDark={isDark} />
         </main>
         

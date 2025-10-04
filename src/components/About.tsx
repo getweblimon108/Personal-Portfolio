@@ -1,5 +1,5 @@
+
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import CertificatesSection from '@/components/CertificatesSection';
 import aboutImage from '@/assets/about-image-new.jpg';
@@ -12,25 +12,13 @@ const About = ({ isDark }: AboutProps) => {
   return (
     <section id="about" className={`py-20 px-4 ${isDark ? 'bg-gray-900/50' : 'bg-gray-50'}`}>
       <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}
-        >
+        <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in ${isDark ? 'text-white' : 'text-gray-900'}`}>
           About Me
-        </motion.h2>
+        </h2>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="order-1 lg:order-1 sm:flex sm:justify-center lg:justify-start"
-          >
+          {/* Image - mobile: top, tablet & desktop: left */}
+          <div className="order-1 lg:order-1 sm:flex sm:justify-center lg:justify-start animate-slide-in-left">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl group animated-border-square">
               <img
                 src={aboutImage}
@@ -41,16 +29,10 @@ const About = ({ isDark }: AboutProps) => {
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent"></div>
               <div className="absolute inset-0 ring-2 ring-primary/20 rounded-2xl group-hover:ring-primary/40 transition-all duration-500"></div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="order-2 lg:order-2 space-y-8"
-          >
+          {/* Content - mobile: bottom, desktop: right */}
+          <div className="order-2 lg:order-2 space-y-8 animate-slide-in-right">
             <div className="animate-fade-in">
               <h3 className={`text-2xl font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 My Journey
@@ -89,7 +71,7 @@ const About = ({ isDark }: AboutProps) => {
                 My experience spans across modern web technologies, UI/UX design, and multimedia content creation.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         <CertificatesSection isDark={isDark} />

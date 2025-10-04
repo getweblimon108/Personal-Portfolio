@@ -1,5 +1,5 @@
+
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -81,30 +81,19 @@ const Projects = ({ isDark }: ProjectsProps) => {
   return (
     <section id="projects" className={`py-20 px-4 ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
       <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}
-        >
+        <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in ${isDark ? 'text-white' : 'text-gray-900'}`}>
           Featured Projects
-        </motion.h2>
+        </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <Card
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`overflow-hidden transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift ${
+                isDark ? 'bg-gray-700 border-gray-600 hover:border-cyan-400/50' : 'bg-white hover:border-blue-500/50'
+              } hover:shadow-2xl glow-cyan`}
+              style={{ animationDelay: `${index * 200}ms` }}
             >
-              <Card
-                className={`overflow-hidden h-full transition-all duration-500 hover:scale-105 transform group ${
-                  isDark ? 'bg-gray-700 border-gray-600 hover:border-primary/50' : 'bg-white hover:border-primary/50'
-                } hover:shadow-2xl`}
-              >
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
@@ -113,11 +102,11 @@ const Projects = ({ isDark }: ProjectsProps) => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
-                  <Badge className={isDark ? 'bg-primary/90 text-gray-900' : 'bg-primary/90 text-white'}>Featured</Badge>
+                  <Badge className="bg-cyan-400/90 text-gray-900">Featured</Badge>
                 </div>
               </div>
-              <CardContent className="p-6 flex flex-col justify-between">
-                <h3 className={`text-xl font-bold mb-2 transition-colors duration-300 ${isDark ? 'text-white group-hover:text-primary' : 'text-gray-900 group-hover:text-primary'}`}>
+              <CardContent className="p-6 flex flex-col h-full">
+                <h3 className={`text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                   {project.title}
                 </h3>
                 <p className={`mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -141,7 +130,11 @@ const Projects = ({ isDark }: ProjectsProps) => {
                       size="sm" 
                       variant="outline"
                       asChild
-                      className="flex-1 group/btn"
+                      className={`flex-1 group/btn ${
+                        isDark 
+                          ? 'border-gray-500 text-gray-200 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-400/10' 
+                          : 'border-gray-400 text-gray-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50'
+                      }`}
                     >
                       <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} code on GitHub`}>
                         <span className="inline-flex items-center">
@@ -153,7 +146,11 @@ const Projects = ({ isDark }: ProjectsProps) => {
                     <Button 
                       size="sm" 
                       asChild
-                      className="flex-1 group/btn bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+                      className={`flex-1 group/btn ${
+                        isDark
+                          ? 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white'
+                      }`}
                     >
                       <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open live demo of ${project.title}`}>
                         <span className="inline-flex items-center">
@@ -166,7 +163,6 @@ const Projects = ({ isDark }: ProjectsProps) => {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
           ))}
         </div>
       </div>
