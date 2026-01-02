@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Palette, Video, Camera, Star, TrendingUp } from 'lucide-react';
+import { Terminal, Layers, Clapperboard, ImagePlus, PenTool, Megaphone } from 'lucide-react';
 import { 
   Tooltip,
   TooltipContent,
@@ -14,21 +14,24 @@ interface EnhancedServicesProps {
 const EnhancedServices = ({ isDark }: EnhancedServicesProps) => {
   const services = [
     {
-      icon: <Code className="w-8 h-8" />,
+      icon: <Terminal className="w-8 h-8" />,
       title: 'Full Stack Development',
       description: 'Complete web applications with modern technologies',
       tooltip: 'React, Node.js, MongoDB, Express - End-to-end development'
     },
     {
-      icon: <Palette className="w-8 h-8" />,
+      icon: <Layers className="w-8 h-8" />,
       title: 'UI/UX Design',
       description: 'Beautiful and intuitive user interfaces',
       tooltip: 'Figma, Adobe XD, User research, Prototyping'
     },
     {
       icon: (
-        <svg className="w-8 h-8" viewBox="0 0 24 24">
-          <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" fill="#4285F4"/>
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+          <path d="M5.319 15.942l2.346-2.5 3.453 3.678-4.612 4.91c-.836.89-2.235.893-3.076.008l-.002-.002a2.308 2.308 0 01.007-3.219l1.884-2.876z" fill="#FBBC04"/>
+          <path d="M18.681 8.058l-2.346 2.5-3.453-3.678 4.612-4.91c.836-.89 2.235-.893 3.076-.008l.002.002a2.308 2.308 0 01-.007 3.219l-1.884 2.876z" fill="#4285F4"/>
+          <path d="M8.335 10.558l3.453 3.678L8.335 17.9l-3.453-3.678 3.453-3.664z" fill="#34A853"/>
+          <path d="M15.665 13.442l-3.453-3.678 3.453-3.664 3.453 3.678-3.453 3.664z" fill="#EA4335"/>
         </svg>
       ),
       title: 'Google Ads',
@@ -37,8 +40,15 @@ const EnhancedServices = ({ isDark }: EnhancedServicesProps) => {
     },
     {
       icon: (
-        <svg className="w-8 h-8" viewBox="0 0 24 24">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+          <defs>
+            <linearGradient id="metaGradientEnhanced" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#0088FF"/>
+              <stop offset="50%" stopColor="#A033FF"/>
+              <stop offset="100%" stopColor="#FF5C87"/>
+            </linearGradient>
+          </defs>
+          <path d="M6.915 4.03c-1.968 0-3.463 1.35-4.043 3.323-.671 2.28.083 4.907 1.998 6.822l5.028 5.028c.667.667 1.64 1.022 2.602 1.022.961 0 1.934-.355 2.601-1.022l5.029-5.028c1.914-1.915 2.668-4.542 1.997-6.822-.58-1.973-2.075-3.323-4.043-3.323-.812 0-1.612.247-2.32.716L12 6.38l-3.765-1.633A4.458 4.458 0 006.915 4.03z" fill="url(#metaGradientEnhanced)"/>
         </svg>
       ),
       title: 'Meta Ads',
@@ -46,25 +56,25 @@ const EnhancedServices = ({ isDark }: EnhancedServicesProps) => {
       tooltip: 'Facebook ads, Instagram campaigns, Audience targeting, Retargeting'
     },
     {
-      icon: <Video className="w-8 h-8" />,
+      icon: <Clapperboard className="w-8 h-8" />,
       title: 'Video Editing',
       description: 'Professional video content creation',
       tooltip: 'Adobe Premiere Pro, After Effects, Motion graphics'
     },
     {
-      icon: <Camera className="w-8 h-8" />,
+      icon: <ImagePlus className="w-8 h-8" />,
       title: 'Photo Editing',
       description: 'Creative photo manipulation and enhancement',
       tooltip: 'Adobe Photoshop, Lightroom, Color grading, Retouching'
     },
     {
-      icon: <Star className="w-8 h-8" />,
+      icon: <PenTool className="w-8 h-8" />,
       title: 'Graphics Designing',
       description: 'Creative visual design and branding solutions',
       tooltip: 'Adobe Illustrator, Brand identity, Logo design, Print design'
     },
     {
-      icon: <TrendingUp className="w-8 h-8" />,
+      icon: <Megaphone className="w-8 h-8" />,
       title: 'Digital Marketing',
       description: 'SEO, social media marketing, and online brand growth',
       tooltip: 'SEO optimization, Content strategy, Social media management'
