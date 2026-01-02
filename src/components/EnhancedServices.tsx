@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Terminal, Layers, Clapperboard, ImagePlus, PenTool, Megaphone } from 'lucide-react';
 import { 
   Tooltip,
@@ -10,6 +11,31 @@ import {
 interface EnhancedServicesProps {
   isDark: boolean;
 }
+
+// Official Google Ads Icon
+const GoogleAdsIcon = () => (
+  <svg className="w-8 h-8" viewBox="0 0 192 192" fill="none">
+    <path d="M12.214 108.474l48.493-83.994c9.9-17.147 31.813-23.02 48.96-13.12 17.148 9.9 23.02 31.813 13.12 48.96L74.294 144.314c-9.9 17.147-31.813 23.02-48.96 13.12-17.147-9.9-23.02-31.813-13.12-48.96z" fill="#FBBC04"/>
+    <path d="M179.786 108.474l-48.493-83.994c-9.9-17.147-31.813-23.02-48.96-13.12-17.148 9.9-23.02 31.813-13.12 48.96l48.493 83.994c9.9 17.147 31.813 23.02 48.96 13.12 17.147-9.9 23.02-31.813 13.12-48.96z" fill="#4285F4"/>
+    <circle cx="36" cy="144" r="24" fill="#34A853"/>
+  </svg>
+);
+
+// Official Meta/Facebook Icon
+const MetaIcon = () => (
+  <svg className="w-8 h-8" viewBox="0 0 36 36" fill="none">
+    <defs>
+      <linearGradient id="metaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#0081FB"/>
+        <stop offset="25%" stopColor="#0064E0"/>
+        <stop offset="50%" stopColor="#A033FF"/>
+        <stop offset="75%" stopColor="#FF5C87"/>
+        <stop offset="100%" stopColor="#FF7A59"/>
+      </linearGradient>
+    </defs>
+    <path d="M8.04 18c0-3.7 1.95-7.7 4.44-10.36 2.82-3.01 5.9-4.14 8.56-4.14 3.06 0 5.24 1.28 6.73 3.01 1.35 1.56 2.23 3.54 2.84 5.49.58 1.84.95 3.68.95 5.5 0 1.82-.37 3.66-.95 5.5-.61 1.95-1.49 3.93-2.84 5.49-1.49 1.73-3.67 3.01-6.73 3.01-2.66 0-5.74-1.13-8.56-4.14C9.99 25.7 8.04 21.7 8.04 18zm6.59 0c0 2.03.79 4.29 2.09 5.78.72.82 1.5 1.22 2.32 1.22.82 0 1.42-.29 1.88-.78.53-.56.97-1.39 1.28-2.38.35-1.1.55-2.38.55-3.84 0-1.46-.2-2.74-.55-3.84-.31-.99-.75-1.82-1.28-2.38-.46-.49-1.06-.78-1.88-.78-.82 0-1.6.4-2.32 1.22-1.3 1.49-2.09 3.75-2.09 5.78z" fill="url(#metaGradient)"/>
+  </svg>
+);
 
 const EnhancedServices = ({ isDark }: EnhancedServicesProps) => {
   const services = [
@@ -26,33 +52,15 @@ const EnhancedServices = ({ isDark }: EnhancedServicesProps) => {
       tooltip: 'Figma, Adobe XD, User research, Prototyping'
     },
     {
-      icon: (
-        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
-          <path d="M5.319 15.942l2.346-2.5 3.453 3.678-4.612 4.91c-.836.89-2.235.893-3.076.008l-.002-.002a2.308 2.308 0 01.007-3.219l1.884-2.876z" fill="#FBBC04"/>
-          <path d="M18.681 8.058l-2.346 2.5-3.453-3.678 4.612-4.91c.836-.89 2.235-.893 3.076-.008l.002.002a2.308 2.308 0 01-.007 3.219l-1.884 2.876z" fill="#4285F4"/>
-          <path d="M8.335 10.558l3.453 3.678L8.335 17.9l-3.453-3.678 3.453-3.664z" fill="#34A853"/>
-          <path d="M15.665 13.442l-3.453-3.678 3.453-3.664 3.453 3.678-3.453 3.664z" fill="#EA4335"/>
-        </svg>
-      ),
+      icon: <GoogleAdsIcon />,
       title: 'Google Ads',
-      description: 'Professional Google Ads campaigns for maximum ROI and targeted reach',
+      description: 'Professional Google Ads campaigns for maximum ROI',
       tooltip: 'Search ads, Display campaigns, YouTube advertising, Shopping ads'
     },
     {
-      icon: (
-        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
-          <defs>
-            <linearGradient id="metaGradientEnhanced" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#0088FF"/>
-              <stop offset="50%" stopColor="#A033FF"/>
-              <stop offset="100%" stopColor="#FF5C87"/>
-            </linearGradient>
-          </defs>
-          <path d="M6.915 4.03c-1.968 0-3.463 1.35-4.043 3.323-.671 2.28.083 4.907 1.998 6.822l5.028 5.028c.667.667 1.64 1.022 2.602 1.022.961 0 1.934-.355 2.601-1.022l5.029-5.028c1.914-1.915 2.668-4.542 1.997-6.822-.58-1.973-2.075-3.323-4.043-3.323-.812 0-1.612.247-2.32.716L12 6.38l-3.765-1.633A4.458 4.458 0 006.915 4.03z" fill="url(#metaGradientEnhanced)"/>
-        </svg>
-      ),
+      icon: <MetaIcon />,
       title: 'Meta Ads',
-      description: 'Strategic Facebook & Instagram advertising for social media success',
+      description: 'Strategic Facebook & Instagram advertising',
       tooltip: 'Facebook ads, Instagram campaigns, Audience targeting, Retargeting'
     },
     {
@@ -81,80 +89,155 @@ const EnhancedServices = ({ isDark }: EnhancedServicesProps) => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15,
+        duration: 0.6
+      }
+    }
+  };
+
+  const statVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 150,
+        damping: 12
+      }
+    }
+  };
+
   return (
-    <section id="services" className={`py-20 px-4 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
+    <section id="services" className={`py-24 px-4 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className={`text-3xl md:text-4xl font-bold mb-4 animate-fade-in ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Services I 
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent ml-2">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <h2 className={`font-display text-4xl md:text-5xl font-bold mb-4 tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            Services I{' '}
+            <span className="bg-gradient-to-r from-primary via-cyan-400 to-accent bg-clip-text text-transparent">
               Offer
             </span>
           </h2>
-          <p className={`text-lg max-w-2xl mx-auto ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+          <p className={`text-lg max-w-2xl mx-auto font-light ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             Comprehensive digital solutions to bring your vision to life
           </p>
-        </div>
+        </motion.div>
 
         <TooltipProvider>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {services.map((service) => (
               <Tooltip key={service.title}>
                 <TooltipTrigger asChild>
-                  <div
-                    className={`group p-8 rounded-xl text-center transition-all duration-500 hover:scale-105 transform animate-fade-in cursor-pointer ${
+                  <motion.div
+                    variants={cardVariants}
+                    whileHover={{ 
+                      y: -8, 
+                      scale: 1.02,
+                      transition: { type: "spring", stiffness: 400, damping: 17 }
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`group p-8 rounded-2xl text-center cursor-pointer relative overflow-hidden backdrop-blur-sm ${
                       isDark 
-                        ? 'bg-gray-800 border border-gray-700 hover:border-primary/50' 
-                        : 'bg-white border border-gray-200 hover:border-primary/50'
-                    } shadow-lg hover:shadow-2xl hover-lift relative overflow-hidden`}
-                    style={{ animationDelay: `${index * 100}ms` }}
+                        ? 'bg-gray-800/80 border border-gray-700/50 hover:border-primary/50' 
+                        : 'bg-white/80 border border-gray-200/50 hover:border-primary/50'
+                    } shadow-lg hover:shadow-2xl`}
                   >
                     {/* Animated background gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
                     
                     <div className="relative z-10">
-                      <div className="text-primary mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 flex justify-center">
+                      <motion.div 
+                        className="text-primary mb-6 flex justify-center"
+                        whileHover={{ 
+                          scale: 1.2, 
+                          rotate: 5,
+                          transition: { type: "spring", stiffness: 300 }
+                        }}
+                      >
                         {service.icon}
-                      </div>
-                      <h3 className={`text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                      </motion.div>
+                      <h3 className={`font-display text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                         {service.title}
                       </h3>
-                      <p className={`text-sm leading-relaxed transition-colors duration-300 ${isDark ? 'text-gray-300 group-hover:text-gray-200' : 'text-gray-600 group-hover:text-gray-700'}`}>
+                      <p className={`text-sm leading-relaxed font-light ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                         {service.description}
                       </p>
                     </div>
 
                     {/* Hover glow effect */}
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
-                  </div>
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
+                  </motion.div>
                 </TooltipTrigger>
-                <TooltipContent side="top" className="max-w-xs">
+                <TooltipContent side="top" className="max-w-xs font-sans">
                   <p className="text-sm">{service.tooltip}</p>
                 </TooltipContent>
               </Tooltip>
             ))}
-          </div>
+          </motion.div>
         </TooltipProvider>
 
         {/* Services stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className={`p-6 rounded-lg ${isDark ? 'bg-gray-800' : 'bg-gray-50'} hover-lift`}>
-            <div className="text-3xl font-bold text-primary mb-2">8</div>
-            <div className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Services Offered</div>
-          </div>
-          <div className={`p-6 rounded-lg ${isDark ? 'bg-gray-800' : 'bg-gray-50'} hover-lift`}>
-            <div className="text-3xl font-bold text-primary mb-2">50+</div>
-            <div className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Projects Completed</div>
-          </div>
-          <div className={`p-6 rounded-lg ${isDark ? 'bg-gray-800' : 'bg-gray-50'} hover-lift`}>
-            <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-            <div className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Support Available</div>
-          </div>
-          <div className={`p-6 rounded-lg ${isDark ? 'bg-gray-800' : 'bg-gray-50'} hover-lift`}>
-            <div className="text-3xl font-bold text-primary mb-2">100%</div>
-            <div className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Client Satisfaction</div>
-          </div>
-        </div>
+        <motion.div 
+          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {[
+            { value: '8', label: 'Services Offered' },
+            { value: '50+', label: 'Projects Completed' },
+            { value: '24/7', label: 'Support Available' },
+            { value: '100%', label: 'Client Satisfaction' }
+          ].map((stat) => (
+            <motion.div 
+              key={stat.label}
+              variants={statVariants}
+              whileHover={{ y: -4, transition: { type: "spring", stiffness: 300 } }}
+              className={`p-6 rounded-xl backdrop-blur-sm ${isDark ? 'bg-gray-800/60 border border-gray-700/30' : 'bg-gray-50/80 border border-gray-200/30'}`}
+            >
+              <div className="font-display text-3xl font-bold text-primary mb-2">{stat.value}</div>
+              <div className={`text-sm font-light ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
