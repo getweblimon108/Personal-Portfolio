@@ -4,7 +4,7 @@ import { useToast } from '@/hooks/use-toast';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Projects from '@/components/Projects';
+import ProjectsGrid from '@/components/ProjectsGrid';
 import EnhancedServices from '@/components/EnhancedServices';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -101,7 +101,7 @@ const Index = () => {
           {/* Enhanced Skills Section */}
           <SkillsSection isDark={isDark} />
 
-          <Projects isDark={isDark} />
+          <ProjectsGrid isDark={isDark} />
           <EnhancedServices isDark={isDark} />
           <Contact isDark={isDark} />
         </main>
