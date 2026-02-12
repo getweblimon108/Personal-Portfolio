@@ -75,6 +75,22 @@ const Projects = ({ isDark }: ProjectsProps) => {
       image: 'https://i.postimg.cc/8PnSYjzn/image.png',
       liveUrl: 'https://forparents.vercel.app/',
       codeUrl: 'https://github.com/getweblimon108/Parent-day'
+    },
+    {
+      title: 'Weather App',
+      description: 'Real-time weather application with location-based forecasts and beautiful UI.',
+      tech: ['JavaScript', 'API', 'CSS3'],
+      image: 'https://i.postimg.cc/zBtVJmrR/image.png',
+      liveUrl: 'https://hammadweather.vercel.app/',
+      codeUrl: 'https://github.com/getweblimon108/hammad-weather'
+    },
+    {
+      title: 'Birthday Wish Generator',
+      description: 'Unique and interactive birthday wish creator with custom templates.',
+      tech: ['JavaScript', 'HTML5', 'CSS3'],
+      image: 'https://i.postimg.cc/fyQTWMPf/image.png',
+      liveUrl: 'https://unique-birthday-wish.vercel.app/',
+      codeUrl: 'https://github.com/getweblimon108/unique-birthdaywish'
     }
   ];
 
