@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Github, ExternalLink, Sparkles, Globe, Heart, Zap, LayoutGrid } from 'lucide-react';
+import { Github, ExternalLink, Globe, Heart, Zap, LayoutGrid } from 'lucide-react';
 import ecommercePreview from '@/assets/ecommerce-preview.png';
 
 interface ProjectsGridProps {
@@ -51,16 +51,7 @@ const ProjectsGrid = ({ isDark }: ProjectsGridProps) => {
       image: 'https://i.postimg.cc/8PnSYjzn/image.png',
       liveUrl: 'https://forparents.vercel.app/',
       codeUrl: 'https://github.com/getweblimon108/Parent-day',
-      category: 'web-apps'
-    },
-    {
-      title: 'Portfolio Website',
-      description: 'Professional portfolio showcase website with modern design and animations.',
-      tech: ['Vue.js', 'Tailwind', 'Responsive'],
-      image: 'https://i.postimg.cc/3xc2WCJC/image.png',
-      liveUrl: 'https://getweblimonportfolio.vercel.app/',
-      codeUrl: 'https://github.com/getweblimon108/Portfolio/tree/main/Portfolio',
-      category: 'landing-pages'
+      category: 'tributes'
     },
     {
       title: 'Youm-e-Takbeer',
@@ -69,7 +60,7 @@ const ProjectsGrid = ({ isDark }: ProjectsGridProps) => {
       image: 'https://i.postimg.cc/6qmmM4fr/image.png',
       liveUrl: 'https://youm-e-takbeer.vercel.app/',
       codeUrl: 'https://github.com/getweblimon108/Yom-r-takbeer',
-      category: 'landing-pages'
+      category: 'creative'
     },
     {
       title: 'Mathematical Heart',
@@ -119,9 +110,8 @@ const ProjectsGrid = ({ isDark }: ProjectsGridProps) => {
   ];
 
   const filters = [
-    { key: 'all', label: 'All Projects', icon: <LayoutGrid className="w-4 h-4" />, count: projects.length },
+    { key: 'all', label: 'All', icon: <LayoutGrid className="w-4 h-4" />, count: projects.length },
     { key: 'web-apps', label: 'Web Apps', icon: <Globe className="w-4 h-4" />, count: projects.filter(p => p.category === 'web-apps').length },
-    { key: 'landing-pages', label: 'Landing Pages', icon: <Sparkles className="w-4 h-4" />, count: projects.filter(p => p.category === 'landing-pages').length },
     { key: 'creative', label: 'Creative', icon: <Zap className="w-4 h-4" />, count: projects.filter(p => p.category === 'creative').length },
     { key: 'tributes', label: 'Tributes', icon: <Heart className="w-4 h-4" />, count: projects.filter(p => p.category === 'tributes').length },
   ];
@@ -155,46 +145,48 @@ const ProjectsGrid = ({ isDark }: ProjectsGridProps) => {
           </p>
         </motion.div>
 
-        {/* Filter Tabs */}
+        {/* Scrollable Category Chips - Mobile Friendly */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-14"
+          className="relative mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          {filters.map((filter) => (
-            <button
-              key={filter.key}
-              onClick={() => setActiveFilter(filter.key)}
-              className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeFilter === filter.key
-                  ? 'text-primary-foreground shadow-lg shadow-primary/25'
-                  : isDark
-                    ? 'text-gray-400 hover:text-white bg-gray-800/60 hover:bg-gray-700/80 border border-gray-700/50 hover:border-gray-600'
-                    : 'text-gray-600 hover:text-gray-900 bg-white/80 hover:bg-white border border-gray-200 hover:border-gray-300'
-              }`}
-            >
-              {activeFilter === filter.key && (
-                <motion.div
-                  layoutId="activeFilter"
-                  className="absolute inset-0 bg-primary rounded-full"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-2">
-                {filter.icon}
-                {filter.label}
-                <span className={`text-xs px-1.5 py-0.5 rounded-full ${
+          <div className="flex overflow-x-auto no-scrollbar gap-2 px-1 py-1 justify-start md:justify-center">
+            {filters.map((filter) => (
+              <button
+                key={filter.key}
+                onClick={() => setActiveFilter(filter.key)}
+                className={`relative flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   activeFilter === filter.key
-                    ? 'bg-white/20'
-                    : isDark ? 'bg-gray-700' : 'bg-gray-100'
-                }`}>
-                  {filter.count}
+                    ? 'text-primary-foreground shadow-md'
+                    : isDark
+                      ? 'text-gray-400 hover:text-white bg-gray-800/80 border border-gray-700/50'
+                      : 'text-gray-600 hover:text-gray-900 bg-white border border-gray-200'
+                }`}
+              >
+                {activeFilter === filter.key && (
+                  <motion.div
+                    layoutId="activeChip"
+                    className="absolute inset-0 bg-primary rounded-lg"
+                    transition={{ type: "spring", stiffness: 400, damping: 28 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-1.5 whitespace-nowrap">
+                  {filter.icon}
+                  {filter.label}
+                  <span className={`text-[10px] font-bold min-w-[18px] h-[18px] flex items-center justify-center rounded-full ${
+                    activeFilter === filter.key
+                      ? 'bg-white/25'
+                      : isDark ? 'bg-gray-700 text-gray-400' : 'bg-gray-100 text-gray-500'
+                  }`}>
+                    {filter.count}
+                  </span>
                 </span>
-              </span>
-            </button>
-          ))}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Projects Grid */}
