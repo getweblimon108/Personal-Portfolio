@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +11,7 @@ interface ProjectsProps {
 }
 
 const Projects = ({ isDark }: ProjectsProps) => {
+  const [showAllMobile, setShowAllMobile] = useState(false);
   const projects = [
     {
       title: 'E-Commerce Website',
@@ -101,11 +102,13 @@ const Projects = ({ isDark }: ProjectsProps) => {
           Featured Projects
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => {
+            const hiddenOnMobile = !showAllMobile && index >= 5;
+            return (
             <Card
               key={project.title}
-              className={`overflow-hidden transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift ${
+              className={`overflow-hidden transition-all duration-500 hover:scale-105 transform group animate-fade-in hover-lift ${hiddenOnMobile ? 'hidden md:block' : ''} ${
                 isDark ? 'bg-gray-700 border-gray-600 hover:border-cyan-400/50' : 'bg-white hover:border-blue-500/50'
               } hover:shadow-2xl glow-cyan`}
               style={{ animationDelay: `${index * 200}ms` }}
@@ -179,8 +182,26 @@ const Projects = ({ isDark }: ProjectsProps) => {
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
+
+        {/* View More Button - Mobile Only */}
+        {!showAllMobile && projects.length > 5 && (
+          <div className="mt-8 text-center md:hidden">
+            <Button
+              variant="outline"
+              onClick={() => setShowAllMobile(true)}
+              className={`px-8 py-3 transition-all duration-300 ${
+                isDark
+                  ? 'border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10'
+                  : 'border-blue-500/50 text-blue-600 hover:bg-blue-50'
+              }`}
+            >
+              View More Projects ({projects.length - 5} more)
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
