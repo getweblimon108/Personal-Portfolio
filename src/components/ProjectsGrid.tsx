@@ -24,6 +24,7 @@ interface Project {
 const ProjectsGrid = ({ isDark }: ProjectsGridProps) => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [isVisible, setIsVisible] = useState(false);
+  const [showAllMobile, setShowAllMobile] = useState(false);
 
   const projects: Project[] = [
     {
@@ -193,11 +194,14 @@ const ProjectsGrid = ({ isDark }: ProjectsGridProps) => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => {
+            // On mobile, hide projects after 5 unless showAllMobile is true
+            const hiddenOnMobile = !showAllMobile && index >= 5;
+            return (
             <Card
               key={project.title}
-              className={`group overflow-hidden transition-all duration-500 hover:scale-105 transform animate-fade-in hover-lift ${
+              className={`group overflow-hidden transition-all duration-500 hover:scale-105 transform animate-fade-in hover-lift ${hiddenOnMobile ? 'hidden md:block' : ''} ${
                 isDark ? 'bg-gray-800 border-gray-700 hover:border-primary/50' : 'bg-white hover:border-primary/50'
               } hover:shadow-2xl ${project.featured ? 'ring-2 ring-primary/30' : ''}`}
               style={{ animationDelay: `${index * 100}ms` }}
@@ -293,8 +297,26 @@ const ProjectsGrid = ({ isDark }: ProjectsGridProps) => {
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
+
+        {/* View More Button - Mobile Only */}
+        {!showAllMobile && filteredProjects.length > 5 && (
+          <div className="mt-8 text-center md:hidden">
+            <Button
+              variant="outline"
+              onClick={() => setShowAllMobile(true)}
+              className={`px-8 py-3 transition-all duration-300 ${
+                isDark
+                  ? 'border-primary/50 text-primary hover:bg-primary/10'
+                  : 'border-primary/50 text-primary hover:bg-primary/10'
+              }`}
+            >
+              View More Projects ({filteredProjects.length - 5} more)
+            </Button>
+          </div>
+        )}
 
         {/* Projects Stats */}
         <div className="mt-16 text-center">
