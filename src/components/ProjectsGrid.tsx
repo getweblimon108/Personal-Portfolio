@@ -36,6 +36,16 @@ const ProjectsGrid = ({ isDark }: ProjectsGridProps) => {
       featured: true
     },
     {
+      title: 'Portfolio Website',
+      description: 'My personal developer portfolio showcasing projects, skills, and experience with modern design.',
+      tech: ['React', 'TypeScript', 'Tailwind', 'Framer Motion'],
+      image: '/lovable-uploads/bdc4c176-f4ab-4e0f-a4fd-904bab0dd279.png',
+      liveUrl: 'https://friendly-begin-spark.lovable.app',
+      codeUrl: 'https://github.com/getweblimon108',
+      category: 'web-apps',
+      featured: true
+    },
+    {
       title: 'Weather App',
       description: 'Real-time weather application with location-based forecasts and beautiful UI.',
       tech: ['JavaScript', 'API', 'CSS3'],
@@ -153,7 +163,7 @@ const ProjectsGrid = ({ isDark }: ProjectsGridProps) => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="flex overflow-x-auto no-scrollbar gap-2 px-1 py-1 justify-start md:justify-center">
+          <div className="flex overflow-x-auto no-scrollbar gap-2 px-1 py-1 justify-start sm:justify-center sm:flex-wrap sm:overflow-visible">
             {filters.map((filter) => (
               <button
                 key={filter.key}
